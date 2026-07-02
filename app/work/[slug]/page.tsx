@@ -65,9 +65,14 @@ export default async function CaseStudy({
           <h2 className="font-mono text-sm text-ink-muted md:col-span-3">
             Build
           </h2>
-          <p className="max-w-[62ch] leading-relaxed md:col-span-9">
-            {project.build}
-          </p>
+          <ul className="max-w-[62ch] space-y-3 md:col-span-9">
+            {project.build.map((b) => (
+              <li key={b} className="flex gap-3 leading-relaxed">
+                <span className="text-accent">—</span>
+                {b}
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className="mt-12 grid gap-12 border-t border-hairline pt-12 md:grid-cols-12 md:gap-4 md:pb-16 md:pt-16">

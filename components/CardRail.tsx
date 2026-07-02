@@ -44,9 +44,14 @@ export default function CardRail({ id, label, cards }: {
                 {c.title}
               </h3>
               <p className="mt-2 font-mono text-sm text-accent">{c.tag}</p>
-              <p className="mt-4 text-sm leading-relaxed text-ink-muted">
-                {c.detail}
-              </p>
+              <ul className="mt-4 space-y-2 text-sm leading-relaxed text-ink-muted">
+                {c.points.map((p) => (
+                  <li key={p} className="flex gap-2">
+                    <span className="text-accent">—</span>
+                    {p}
+                  </li>
+                ))}
+              </ul>
               {c.href &&
                 (external ? (
                   <a

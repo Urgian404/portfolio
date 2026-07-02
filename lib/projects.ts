@@ -5,7 +5,7 @@ export type Project = {
   oneLiner: string;
   status: string;
   problem: string;
-  build: string;
+  build: string[];
   metrics: string[];
 };
 
@@ -17,9 +17,14 @@ export const projects: Project[] = [
     oneLiner: "Production referral platform for a B2C insurance brand",
     status: "Live",
     problem:
-      "Plum needed a referral system that could turn existing customers into a distribution channel — track shares, attribute signups, and pay out rewards without manual reconciliation.",
-    build:
-      "Built end to end on Next.js and Supabase: Tally and purchase webhooks feed a referral pipeline, RLS-gated service-role routes handle all data access behind an auth proxy, and database triggers auto-create referral records with a 30-day expiry window. WhatsApp templates and a reward-tier system handle the customer-facing side. Directed the full build — architecture, schema, hardening — using AI as the implementation layer.",
+      "Plum needed a referral system that could turn existing customers into a distribution channel \u2014 track shares, attribute signups, and pay out rewards without manual reconciliation.",
+    build: [
+      "Next.js + Supabase, built end to end \u2014 architecture, schema, hardening",
+      "Tally and purchase webhooks feed the referral pipeline",
+      "RLS-gated service-role routes behind an auth proxy for all data access",
+      "DB triggers auto-create referral records with a 30-day expiry window",
+      "WhatsApp templates and a reward-tier system on the customer side",
+    ],
     metrics: [
       "Live in production",
       "RLS + service-role architecture, hardened for prod",
@@ -33,9 +38,13 @@ export const projects: Project[] = [
     oneLiner: "A $0 job-hunt pipeline built on LinkedIn saved posts",
     status: "Personal tool",
     problem:
-      "Job hunting through LinkedIn saved posts doesn't scale — no tracking, no structure, and every cover letter written from scratch.",
-    build:
-      "Scrapes saved LinkedIn posts into a 7-tab Google Sheet, runs free rule-based extraction to structure job data, and generates per-row cover-letter PDFs from a fixed template via Google Apps Script and Drive. Fully free-tier — no paid enrichment APIs.",
+      "Job hunting through LinkedIn saved posts doesn't scale \u2014 no tracking, no structure, and every cover letter written from scratch.",
+    build: [
+      "Scrapes saved LinkedIn posts into a 7-tab Google Sheet",
+      "Free rule-based extraction structures the raw job data",
+      "Per-row cover-letter PDFs generated from a fixed template via Apps Script + Drive",
+      "Fully free-tier \u2014 no paid enrichment APIs",
+    ],
     metrics: [
       "7-tab structured pipeline from raw saved posts",
       "Automated per-application cover-letter generation",
@@ -49,9 +58,13 @@ export const projects: Project[] = [
     oneLiner: "Offline-first training and nutrition planner",
     status: "In development",
     problem:
-      "Wanted a training and nutrition planner tailored to a real constraint set — beginner level, back-and-shoulders priority, low bone density — that works without a connection.",
-    build:
-      "Next.js app with offline-first local storage and last-write-wins sync to Supabase, magic-link auth. Currently building a voice/text daily logger on top of the existing planning core.",
+      "Wanted a training and nutrition planner tailored to a real constraint set \u2014 beginner level, back-and-shoulders priority, low bone density \u2014 that works without a connection.",
+    build: [
+      "Next.js app with offline-first local storage",
+      "Last-write-wins sync to Supabase, magic-link auth",
+      "Personalized program logic for specific physical constraints",
+      "Voice/text daily logger in active development",
+    ],
     metrics: [
       "Offline-first sync working end to end",
       "Personalized program logic for specific physical constraints",
