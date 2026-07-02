@@ -24,9 +24,9 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Urgian Padma - builds production software with AI",
+  title: "Urgian Padma",
   description:
-    "MBA from IIM Indore who ships end-to-end systems: a live referral engine, a job-hunt pipeline, an offline-first fitness app.",
+    "Builder interested in marketing and AI — a live referral engine, a job-hunt pipeline, an offline-first fitness app.",
 };
 
 export default function RootLayout({
