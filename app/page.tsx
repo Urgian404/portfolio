@@ -1,7 +1,7 @@
 import Link from "next/link";
-import Image from "next/image";
 import { projects } from "@/lib/projects";
-import { achievements } from "@/lib/achievements";
+import { achievements, internships, research } from "@/lib/resume";
+import CardRail from "@/components/CardRail";
 
 export default function Home() {
   return (
@@ -86,59 +86,13 @@ export default function Home() {
           </div>
         </section>
 
-        <section
-          id="achievements"
-          className="border-t border-hairline py-[var(--section)]"
-        >
-          <div className="grid gap-8 md:grid-cols-12">
-            <h2 className="font-mono text-sm text-ink-muted md:col-span-2">
-              Achievements
-            </h2>
-            <div className="space-y-16 md:col-span-10">
-              {achievements.map((a) => (
-                <div
-                  key={a.num}
-                  className="grid gap-8 md:grid-cols-10 md:gap-4"
-                >
-                  <div className="md:col-span-6">
-                    <span className="font-mono text-sm text-ink-muted">
-                      {a.num}
-                    </span>
-                    <h3 className="mt-2 font-display text-display-m font-medium tracking-tight">
-                      {a.title}
-                    </h3>
-                    <p className="mt-2 font-mono text-sm text-accent">
-                      {a.result}
-                    </p>
-                    <p className="mt-4 max-w-[58ch] leading-relaxed text-ink-muted">
-                      {a.detail}
-                    </p>
-                    <p className="mt-4 font-mono text-sm text-ink-muted">
-                      {a.team}
-                    </p>
-                    <a
-                      href={a.proofUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="mt-4 inline-block border-b border-ink pb-0.5 font-mono text-sm transition-colors hover:border-accent hover:text-accent"
-                    >
-                      Proof — LinkedIn post
-                    </a>
-                  </div>
-                  <div className="md:col-span-4">
-                    <Image
-                      src={a.image}
-                      alt={a.imageAlt}
-                      width={540}
-                      height={675}
-                      className="w-full max-w-[420px] border border-hairline"
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <CardRail id="achievements" label="Achievements" cards={achievements} />
+        <CardRail
+          id="internships"
+          label="Internships & Live Projects"
+          cards={internships}
+        />
+        <CardRail id="research" label="Projects & Research" cards={research} />
 
         <section
           id="about"
