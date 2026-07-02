@@ -1,26 +1,79 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+  Derived from lib/design.ts — the token source of truth.
+  Each variable below mirrors a named token there; keep them in sync.
+*/
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root {
+  /* color.light */
+  --paper: #f4f4f0;
+  --ink: #161714;
+  --ink-muted: #5d5f58;
+  --hairline: #d8d8d0;
+  --accent: #2643c7;
+  --accent-ink: #f4f4f0;
+
+  /* space */
+  --section: clamp(5rem, 12vh, 9rem);
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --max-width: 1400px;
+
+  /* motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* color.dark */
+    --paper: #151614;
+    --ink: #edece4;
+    --ink-muted: #9a9c93;
+    --hairline: #33342f;
+    --accent: #8fa0ff;
+    --accent-ink: #151614;
   }
 }
 
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-hairline: var(--hairline);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+
+  --font-display: var(--font-display), sans-serif;
+  --font-sans: var(--font-body), sans-serif;
+  --font-mono: var(--font-mono-plex), monospace;
+
+  /* type — fluid display scale from lib/design.ts */
+  --text-display-xl: clamp(2.75rem, 7vw, 5.5rem);
+  --text-display-l: clamp(2rem, 4.5vw, 3.5rem);
+  --text-display-m: clamp(1.5rem, 3vw, 2.25rem);
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body), sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
