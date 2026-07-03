@@ -131,10 +131,9 @@ export const achievements: Card[] = [
     title: "IMA Student Case Competition, India",
     tag: "National Second Runner-Up · CMA (US) scholarship",
     points: [
-      "Accounting-policy case: should the board account for a 12% stake in a key supplier at Fair Value (FVOCI, IFRS 9) or switch to the Equity Method (IAS 28)?",
-      "Argued significant influence exists below the 20% threshold — second-largest shareholder, no controlling founder vote, board seat offered, material transactions — citing Daimler–Tesla and Coca-Cola–Monster precedents",
-      "Modelled the full three-statement impact under both methods and recommended the Equity Method for stability, transparency and a true-and-fair view",
-      "National second runner-up at the India finals · full CMA (US) scholarship awarded",
+      "Worked on how a company should account for a 12% stake in its key supplier — fair value or the equity method — and what that choice does to its valuation and financials",
+      "Showed the board that real influence matters more than the 20% ownership rule, and recommended the equity method for a truer picture of the business",
+      "National second runner-up at the India finals, with a full CMA (US) scholarship awarded",
     ],
     year: "2024",
     image: "/achievements/ima-scc.jpg",
