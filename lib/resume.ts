@@ -184,19 +184,6 @@ export const achievements: Card[] = [
     ],
     year: "2023–24",
   },
-  {
-    num: "A12",
-    title: "Tata Imagination Challenge",
-    tag: "National Semi-Finalist",
-    points: [
-      "India's biggest idea competition — pitch an idea for change to the Tata Group across brand-assessment, gamified and idea-pitch rounds",
-      "Semi-finalist out of 260,000+ participants in Tata Group's flagship innovation challenge",
-    ],
-    year: "2023",
-    image: "/achievements/tata-imagination.jpg",
-    imageAlt:
-      "Tata Imagination Challenge 2023 banner with Urgian Padma shortlisted in Round 2",
-  },
 ];
 
 export const internships: Card[] = [
