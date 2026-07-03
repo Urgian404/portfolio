@@ -131,9 +131,10 @@ export const achievements: Card[] = [
     title: "IMA Student Case Competition, India",
     tag: "National Second Runner-Up · CMA (US) scholarship",
     points: [
-      "Podium at the Institute of Management Accountants' India finals — a pure finance case, taken on with no prior finance background",
-      "A month of intensive prep with a newly formed team, guided by seniors and faculty",
-      "Awarded a complete scholarship for both rounds of the CMA (US) program",
+      "Accounting-policy case: should the board account for a 12% stake in a key supplier at Fair Value (FVOCI, IFRS 9) or switch to the Equity Method (IAS 28)?",
+      "Argued significant influence exists below the 20% threshold — second-largest shareholder, no controlling founder vote, board seat offered, material transactions — citing Daimler–Tesla and Coca-Cola–Monster precedents",
+      "Modelled the full three-statement impact under both methods and recommended the Equity Method for stability, transparency and a true-and-fair view",
+      "National second runner-up at the India finals · full CMA (US) scholarship awarded",
     ],
     year: "2024",
     image: "/achievements/ima-scc.jpg",
