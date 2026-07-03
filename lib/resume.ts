@@ -165,9 +165,10 @@ export const achievements: Card[] = [
     title: "Samsung E.D.G.E. 9.0",
     tag: "Regional Finalist",
     points: [
-      "Strategy case on Samsung's smart-home push in India: how does SmartThings go from a luxury for a few to a standard for all, given affordability, connectivity and awareness gaps?",
-      "Cleared the campus round at IIM Indore and qualified for the regional round among ~15,000 registrants",
-      "Regional finalist in season nine of Samsung's flagship campus case program",
+      "Strategy case: how does Samsung SmartThings make smart homes a standard for all in India, not a luxury for a few?",
+      "Proposed a B2B2C route — builders pre-install SmartThings suites in premium apartments — plus a bank-partnership model where the upgrade cost rolls into home-loan EMIs and is paid off from the ~20% energy savings the devices generate",
+      "Made it financially self-funding: products sold at cost, margins recovered through the EMI financing and pay-per-use energy savings, with loan securitization to de-risk defaults",
+      "Regional finalist among ~15,000 registrants in season nine of Samsung's flagship campus case program",
     ],
     year: "2024",
     image: "/achievements/samsung-edge.jpg",
@@ -192,6 +193,9 @@ export const achievements: Card[] = [
       "Semi-finalist out of 260,000+ participants in Tata Group's flagship innovation challenge",
     ],
     year: "2023",
+    image: "/achievements/tata-imagination.jpg",
+    imageAlt:
+      "Tata Imagination Challenge 2023 banner with Urgian Padma shortlisted in Round 2",
   },
 ];
 
