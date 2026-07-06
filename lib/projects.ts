@@ -52,8 +52,29 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "fitforge",
+    slug: "krsnaa-hr-dashboard",
     num: "03",
+    title: "Krsnaa HR Dashboard",
+    oneLiner:
+      "Executive HR MIS dashboard with monthly uploads, insights and trends",
+    status: "In use",
+    problem:
+      "Krsnaa's HR data lived in a 15-sheet monthly payroll Excel — no way to see headcount, attrition, cost or compliance at a glance, or compare months.",
+    build: [
+      "Next.js dashboard that parses the monthly HR MIS Excel into stored JSON, one snapshot per month",
+      "Upload flow with parse preview — detected month, key totals and data-quality warnings before saving",
+      "Seven views: overview KPIs with alerts, workforce, attrition, recruitment, cost, compliance and a 6-month trend comparison",
+      "Data-quality handling built in: recomputes broken payroll totals, normalizes free-text hiring sources, flags empty sheets as alerts instead of fake zeros",
+    ],
+    metrics: [
+      "One Excel upload replaces manual monthly MIS review",
+      "Month-on-month KPI trends across 6 months in one table",
+      "Bad workbook data surfaced as alerts, not silently wrong numbers",
+    ],
+  },
+  {
+    slug: "fitforge",
+    num: "04",
     title: "FitForge",
     oneLiner: "Offline-first training and nutrition planner",
     status: "In development",
