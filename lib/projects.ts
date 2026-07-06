@@ -52,14 +52,14 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "krsnaa-hr-dashboard",
+    slug: "hr-dashboard",
     num: "03",
-    title: "Krsnaa HR Dashboard",
+    title: "HR MIS Dashboard",
     oneLiner:
       "Executive HR MIS dashboard with monthly uploads, insights and trends",
     status: "In use",
     problem:
-      "Krsnaa's HR data lived in a 15-sheet monthly payroll Excel — no way to see headcount, attrition, cost or compliance at a glance, or compare months.",
+      "A diagnostics company's HR data lived in a 15-sheet monthly payroll Excel — no way to see headcount, attrition, cost or compliance at a glance, or compare months.",
     build: [
       "Next.js dashboard that parses the monthly HR MIS Excel into stored JSON, one snapshot per month",
       "Upload flow with parse preview — detected month, key totals and data-quality warnings before saving",
