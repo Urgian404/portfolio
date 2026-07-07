@@ -1,8 +1,9 @@
 /**
  * Design tokens — single source of truth.
- * Aesthetic: "technical dossier" — print-engineering-report energy.
- * Paper-and-ink canvas, one ultramarine accent, grotesque display,
- * mono for metrics/labels, hairline rules, big numerals, asymmetric grid.
+ * Aesthetic: "cinematic dossier" — award-site energy on a technical spine.
+ * Ink-black canvas, cream type, one emerald accent, condensed display
+ * for hero moments, grotesque for structure, mono for metrics/labels,
+ * hairline rules, big numerals, film grain, scroll-driven motion.
  *
  * globals.css derives its CSS variables and @theme mapping from these
  * values. If you change a value here, change it there too — the comment
@@ -10,32 +11,27 @@
  */
 
 export const color = {
-  light: {
-    paper: "#F4F4F0", // page canvas — cool drafting paper, not cream
-    ink: "#161714", // primary text — near-black, slightly cool
-    inkMuted: "#5D5F58", // secondary text
-    hairline: "#D8D8D0", // 1px rules
-    accent: "#2643C7", // ultramarine — blueprint heritage, sole accent
-    accentInk: "#F4F4F0", // text on accent surfaces
-  },
-  dark: {
-    paper: "#151614",
-    ink: "#EDECE4",
-    inkMuted: "#9A9C93",
-    hairline: "#33342F",
-    accent: "#8FA0FF",
-    accentInk: "#151614",
+  cinematic: {
+    paper: "#0A0A0B", // page canvas — ink black
+    ink: "#F1E9DB", // primary text — cream
+    inkMuted: "#8F8B80", // secondary text
+    hairline: "#26261F", // 1px rules
+    accent: "#2FD08C", // emerald — sole accent
+    accentInk: "#06251A", // text on accent surfaces
+    glow: "rgba(47, 208, 140, 0.55)", // portrait rim light
   },
 } as const;
 
 export const font = {
-  display: "Bricolage Grotesque", // headlines — characterful grotesque
+  condensed: "Anton", // hero display — massive condensed statements
+  display: "Bricolage Grotesque", // section headlines — characterful grotesque
   body: "Instrument Sans", // prose
   mono: "IBM Plex Mono", // metrics, labels, figures — dossier voice
 } as const;
 
 /** Type scale — display sizes are clamp()ed in CSS for fluid behavior. */
 export const type = {
+  hero: "clamp(4.5rem, 16.5vw, 15rem)", // cinematic name treatment
   displayXL: "clamp(2.75rem, 7vw, 5.5rem)", // hero headline
   displayL: "clamp(2rem, 4.5vw, 3.5rem)", // section headlines
   displayM: "clamp(1.5rem, 3vw, 2.25rem)", // case-study headers
@@ -51,7 +47,7 @@ export const space = {
 } as const;
 
 export const radius = {
-  none: "0px", // dossier is all-sharp — one shape system, locked
+  none: "0px", // all-sharp — one shape system, locked
 } as const;
 
 export const motion = {

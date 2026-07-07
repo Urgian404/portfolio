@@ -3,6 +3,7 @@ import {
   Bricolage_Grotesque,
   Instrument_Sans,
   IBM_Plex_Mono,
+  Anton,
 } from "next/font/google";
 import "./globals.css";
 
@@ -10,6 +11,12 @@ const display = Bricolage_Grotesque({
   variable: "--font-display",
   subsets: ["latin"],
   axes: ["opsz", "wdth"],
+});
+
+const condensed = Anton({
+  variable: "--font-condensed",
+  subsets: ["latin"],
+  weight: "400",
 });
 
 const body = Instrument_Sans({
@@ -37,7 +44,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${display.variable} ${body.variable} ${mono.variable} h-full antialiased`}
+      className={`${display.variable} ${body.variable} ${mono.variable} ${condensed.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
