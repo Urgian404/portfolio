@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
 import {
   motion,
   useScroll,
@@ -15,10 +14,10 @@ const LAST = "PADMA";
 
 /**
  * Cinematic hero: a tall scroll runway with a pinned viewport.
- * The portrait holds center stage — scale, drift and rim-light are
- * scrubbed by scroll; the name tracks in letter-by-letter around it.
- * Built to swap the still portrait for a Seedance orbit frame-sequence
- * later without touching the scroll rig.
+ * The two name lines start split to opposite edges — URGIAN off left,
+ * PADMA off right — and scrolling slides them into the center as the
+ * hero exits. Portrait slot intentionally empty until the new image
+ * (or the Seedance orbit sequence) arrives; the scroll rig stays.
  */
 export default function Hero() {
   const runway = useRef<HTMLDivElement>(null);
@@ -34,41 +33,42 @@ export default function Hero() {
     mass: 0.35,
   });
 
-  // Portrait: rises and scales in, drifts subtly like a slow orbit push-in
-  const pScale = useTransform(progress, [0, 0.5, 1], [1.06, 1.16, 1.32]);
-  const pY = useTransform(progress, [0, 1], ["4%", "-6%"]);
-  const pRotate = useTransform(progress, [0, 1], [-2.5, 2.5]);
+  // URGIAN slides left → center; PADMA slides right → center
+  const firstX = useTransform(progress, [0, 0.85], ["-14%", "0%"]);
+  const lastX = useTransform(progress, [0, 0.85], ["14%", "0%"]);
 
-  // Name: first name slides left, last name slides right as you scrub
-  const firstX = useTransform(progress, [0, 1], ["0%", "-7%"]);
-  const lastX = useTransform(progress, [0, 1], ["0%", "7%"]);
+  // Lines pull together vertically as they converge
+  const gap = useTransform(progress, [0, 0.85], ["0.12em", "0em"]);
 
   // Subtitle + scroll cue fade out as the scrub takes over
   const cueOpacity = useTransform(progress, [0, 0.25], [1, 0]);
-  // Whole stage dims slightly at the end, handing off to the stats strip
-  const stageOpacity = useTransform(progress, [0.82, 1], [1, 0.25]);
+  // Stage dims at the end, handing off to the next section
+  const stageOpacity = useTransform(progress, [0.85, 1], [1, 0.2]);
 
   return (
-    <div ref={runway} className="relative h-[260vh]">
+    <div ref={runway} className="relative h-[220vh]">
       <motion.section
         style={{ opacity: stageOpacity }}
         className="sticky top-0 flex h-dvh flex-col items-center justify-center overflow-hidden"
       >
-        {/* Emerald atmosphere behind the subject */}
+        {/* Emerald atmosphere */}
         <div
           aria-hidden
-          className="absolute left-1/2 top-1/2 h-[80vmin] w-[80vmin] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-30 blur-[110px]"
+          className="absolute left-1/2 top-1/2 h-[80vmin] w-[80vmin] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-25 blur-[110px]"
           style={{
             background:
               "radial-gradient(closest-side, var(--glow), transparent 70%)",
           }}
         />
 
-        {/* Name — behind the portrait, split across two lines */}
-        <div className="pointer-events-none absolute inset-0 z-10 flex flex-col items-center justify-center select-none">
+        {/* Name — two lines split to the edges, converging on scroll */}
+        <motion.div
+          style={{ gap: reduced ? undefined : gap }}
+          className="relative z-10 flex w-full flex-col px-[var(--gutter)] select-none"
+        >
           <motion.h1
             style={{ x: reduced ? undefined : firstX }}
-            className="font-condensed text-[length:var(--text-hero)] leading-[0.82] tracking-[0.01em]"
+            className="w-full text-left font-condensed text-[length:var(--text-hero)] leading-[0.85] tracking-[0.01em] will-change-transform"
             aria-label="Urgian Padma"
           >
             <Letters word={FIRST} from={-1} />
@@ -76,48 +76,16 @@ export default function Hero() {
           <motion.div
             style={{ x: reduced ? undefined : lastX }}
             aria-hidden
-            className="font-condensed text-[length:var(--text-hero)] leading-[0.82] tracking-[0.01em] text-transparent"
+            className="w-full text-right font-condensed text-[length:var(--text-hero)] leading-[0.85] tracking-[0.01em] text-transparent will-change-transform"
           >
             <span
               style={{ WebkitTextStroke: "1.5px var(--ink)" }}
-              className="opacity-80"
+              className="opacity-90"
             >
               <Letters word={LAST} from={1} />
             </span>
           </motion.div>
-        </div>
-
-        {/* Portrait — center stage, above the first line, under the outline */}
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
-          className="relative z-20 mt-[4vh] h-[62vh] w-auto"
-        >
-          <motion.div
-            style={{
-              scale: reduced ? undefined : pScale,
-              y: reduced ? undefined : pY,
-              rotate: reduced ? undefined : pRotate,
-            }}
-            className="portrait-rim h-full w-auto will-change-transform"
-          >
-          <Image
-            src="/cinematic/urgian-cutout.png"
-            alt="Urgian Padma"
-            width={1800}
-            height={2100}
-            priority
-            className="h-full w-auto object-contain"
-          />
-          </motion.div>
         </motion.div>
-
-        {/* Bottom gradient so the cutout's soft edge melts into black */}
-        <div
-          aria-hidden
-          className="absolute inset-x-0 bottom-0 z-30 h-[22vh] bg-gradient-to-t from-paper to-transparent"
-        />
 
         {/* Subtitle + cue */}
         <motion.div

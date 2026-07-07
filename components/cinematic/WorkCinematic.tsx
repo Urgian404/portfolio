@@ -2,77 +2,53 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import type { Project } from "@/lib/projects";
 
-const featured = [
-  {
-    slug: "plum-referral-engine",
-    num: "01",
-    title: "Plum Referral Engine",
-    pitch:
-      "Turned customers into a distribution channel — live in production for a B2C insurance brand.",
-  },
-  {
-    slug: "hr-dashboard",
-    num: "02",
-    title: "HR MIS Dashboard",
-    pitch:
-      "One Excel upload becomes an executive dashboard — KPIs, attrition, cost, 6-month trends.",
-  },
-  {
-    slug: "fitforge",
-    num: "03",
-    title: "FitForge",
-    pitch:
-      "Offline-first training and nutrition planner with AI voice logging, synced when you are.",
-  },
-];
-
-export default function WorkCinematic() {
+/**
+ * The full build index — every project, each row opening its case page.
+ */
+export default function WorkCinematic({ projects }: { projects: Project[] }) {
   return (
     <section id="work" className="px-[var(--gutter)] py-[var(--section)]">
       <div className="mx-auto max-w-[1400px]">
-        <p className="mb-4 font-mono text-xs tracking-[0.2em] text-ink-muted">
-          SELECTED BUILDS
-        </p>
         <h2 className="mb-14 font-condensed text-[clamp(2.5rem,7vw,5.5rem)] leading-none">
-          THREE THINGS I SHIPPED
+          THINGS THAT ARE BUILT
         </h2>
-        <div className="grid gap-6 md:grid-cols-3">
-          {featured.map((f, i) => (
+        <div className="border-t border-hairline">
+          {projects.map((item, i) => (
             <motion.div
-              key={f.slug}
-              initial={{ opacity: 0, y: 36 }}
+              key={item.num}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10% 0px" }}
+              viewport={{ once: true, margin: "-8% 0px" }}
               transition={{
-                delay: i * 0.12,
-                duration: 0.7,
+                delay: i * 0.06,
+                duration: 0.6,
                 ease: [0.16, 1, 0.3, 1],
               }}
             >
               <Link
-                href={`/work/${f.slug}`}
-                className="group flex h-full flex-col justify-between gap-16 border border-hairline p-8 transition-colors duration-300 hover:border-accent"
+                href={`/work/${item.slug}`}
+                className="group grid grid-cols-12 items-baseline gap-4 border-b border-hairline py-8 transition-colors"
               >
-                <div className="flex items-start justify-between">
-                  <span className="font-mono text-sm text-ink-muted transition-colors group-hover:text-accent">
-                    {f.num}
-                  </span>
+                <span className="col-span-2 font-mono text-sm text-ink-muted md:col-span-1">
+                  {item.num}
+                </span>
+                <span className="col-span-10 font-display text-display-m font-medium tracking-tight transition-colors group-hover:text-accent md:col-span-5">
+                  {item.title}
+                </span>
+                <span className="col-span-10 col-start-3 text-ink-muted md:col-span-4 md:col-start-auto">
+                  {item.oneLiner}
+                </span>
+                <span className="col-span-10 col-start-3 flex items-baseline justify-between font-mono text-sm text-ink-muted md:col-span-2 md:col-start-auto md:justify-end md:gap-4">
+                  {item.status}
                   <span
                     aria-hidden
-                    className="font-mono text-sm text-ink-muted transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-accent"
+                    className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
                   >
                     ↗
                   </span>
-                </div>
-                <div>
-                  <h3 className="mb-3 font-display text-display-m font-semibold tracking-tight transition-transform duration-300 group-hover:-translate-y-1">
-                    {f.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-ink-muted">
-                    {f.pitch}
-                  </p>
-                </div>
+                </span>
               </Link>
             </motion.div>
           ))}

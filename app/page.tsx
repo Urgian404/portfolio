@@ -1,11 +1,8 @@
-import Link from "next/link";
 import { projects } from "@/lib/projects";
 import { achievements, internships, research } from "@/lib/resume";
 import CardRail from "@/components/CardRail";
 import SmoothScroll from "@/components/cinematic/SmoothScroll";
 import Hero from "@/components/cinematic/Hero";
-import Stats from "@/components/cinematic/Stats";
-import Pillars from "@/components/cinematic/Pillars";
 import WorkCinematic from "@/components/cinematic/WorkCinematic";
 import Finale from "@/components/cinematic/Finale";
 
@@ -43,40 +40,10 @@ export default function Home() {
 
         {/* Cinematic sequence */}
         <Hero />
-        <Stats />
-        <Pillars />
-        <WorkCinematic />
+        <WorkCinematic projects={projects} />
 
         {/* The dossier — full record, same text and images as always */}
         <main className="mx-auto w-full max-w-[1400px] px-[var(--gutter)]">
-          <section id="index" className="pb-[var(--section)] pt-8">
-            <p className="mb-6 font-mono text-xs tracking-[0.2em] text-ink-muted">
-              FULL INDEX
-            </p>
-            <div className="border-t border-hairline">
-              {projects.map((item) => (
-                <Link
-                  key={item.num}
-                  href={`/work/${item.slug}`}
-                  className="group grid grid-cols-12 items-baseline gap-4 border-b border-hairline py-8 transition-colors"
-                >
-                  <span className="col-span-2 font-mono text-sm text-ink-muted md:col-span-1">
-                    {item.num}
-                  </span>
-                  <span className="col-span-10 font-display text-display-m font-medium tracking-tight transition-colors group-hover:text-accent md:col-span-5">
-                    {item.title}
-                  </span>
-                  <span className="col-span-10 col-start-3 text-ink-muted md:col-span-4 md:col-start-auto">
-                    {item.oneLiner}
-                  </span>
-                  <span className="col-span-10 col-start-3 font-mono text-sm text-ink-muted md:col-span-2 md:col-start-auto md:text-right">
-                    {item.status}
-                  </span>
-                </Link>
-              ))}
-            </div>
-          </section>
-
           <CardRail
             id="achievements"
             label="Achievements"
