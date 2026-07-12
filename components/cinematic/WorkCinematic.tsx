@@ -12,7 +12,7 @@ export default function WorkCinematic({ projects }: { projects: Project[] }) {
     <section id="work" className="px-[var(--gutter)] py-[var(--section)]">
       <div className="mx-auto max-w-[1400px]">
         <h2 className="mb-14 font-condensed text-[clamp(2.5rem,7vw,5.5rem)] leading-none">
-          THINGS THAT ARE BUILT
+          PROOF OF WORK
         </h2>
         <div className="border-t border-hairline">
           {projects.map((item, i) => (
