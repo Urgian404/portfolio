@@ -92,6 +92,27 @@ export const projects: Project[] = [
       "Voice/text logger in active development",
     ],
   },
+  {
+    slug: "drizzler",
+    num: "05",
+    title: "Drizzler",
+    oneLiner: "AI personal stylist that knows your wardrobe and your taste",
+    status: "In development",
+    problem:
+      "Deciding what to wear — or whether to buy something — means mentally cross-checking a product against everything you own and the style you're going for. No app does that with your actual wardrobe and your actual taste.",
+    build: [
+      "Next.js app around a photographed wardrobe — every piece cataloged and searchable",
+      "'Style This': paste any product link, it's scraped and styled into outfits with your own clothes, tried on you with AI imaging",
+      "'Dress Me': occasion-based outfit proposals — party, date, college, office, casual",
+      "Taste engine: feed it brands, influencers or magazines as anchors — it researches them, distills each into a structured taste card with vision AI, and compiles per-occasion style briefs",
+      "Every suggestion runs through the compiled brief plus your look ratings, so the stylist learns what you like",
+    ],
+    metrics: [
+      "v1 shipped: wardrobe, try-on, stylist and taste engine working end to end",
+      "Taste briefs compile once and cascade into every styling prompt",
+      "Learning loop from outfit ratings feeds back into future suggestions",
+    ],
+  },
 ];
 
 export function getProject(slug: string) {
