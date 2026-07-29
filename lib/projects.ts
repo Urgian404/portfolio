@@ -35,40 +35,34 @@ export const projects: Project[] = [
     status: "v1 working end to end",
     hook: "The trial room online shopping never had — see any purchase styled with your own wardrobe, on you, before you pay.",
     whyItExists: [
-      "It started on Uniqlo's site — models styling pieces in ways that would never occur to me. Styling is a taste you build by being obsessed: what's trending, which colors work together. I don't have it, and most people don't.",
-      "Then the second realization: seeing one shirt on me is useless. Whether it earns its place depends on everything else I own — and no shopping site knows my wardrobe.",
+      "Online shopping deleted the trial room. You can't feel a piece on your body — and you certainly can't see it against everything already in your closet. But nobody wears one item alone, so every purchase is a quiet gamble: will this actually work with what I own?",
     ],
     whatItSolves: [
-      "You never wear one piece alone. A shirt lives with pants, shoes, a jacket. Offline trial rooms tell you how a piece looks on you — never how it works with what you already own.",
-      "Online shopping removed even that. You buy blind twice over: no trial, no wardrobe context.",
-      "Drizzler closes the trial gap online — and adds the one thing a physical trial room can't do: test the purchase against your entire wardrobe before you buy.",
+      "Drizzler answers the gamble before you pay. Paste any product link and it styles the piece into full outfits using the clothes you actually own — rendered on you, in a taste you choose.",
+      "It does what a physical trial room can't: judge a buy against your whole wardrobe, not just the mirror.",
     ],
     whoItsFor: [
-      "People with basic taste who want to dress better without becoming style experts.",
-      "Fashion-obsessed people who follow styling influencers and want their taste applied to their own closet.",
-      "Both ends shop online — that's the entry condition, because the wardrobe builds itself from purchase messages.",
+      "People with plain taste who want to dress better without studying fashion.",
+      "Style obsessives who want an influencer's eye turned on their own closet.",
     ],
     howItWorks: [
       {
-        text: "One-time setup: Drizzler builds your wardrobe from purchase messages and order history — exact products, exact sizes, no guessing from photos. Plus a few photos of you, so results render on your body.",
+        text: "Your wardrobe loads itself from purchase history — exact products, exact sizes. Add a few photos of yourself so outfits render on your body.",
       },
       {
-        text: "Shopping somewhere? Copy the product link, paste it in. Drizzler pulls the piece and styles it into full outfits using only clothes you actually own.",
+        text: "Shopping? Paste the product link. Drizzler builds full looks around it from clothes you already own.",
       },
       {
-        text: "Every suggestion follows a taste you choose. Feed it brands, influencers or magazines as anchors — it researches each one, distills it into a taste card, and styles you accordingly.",
+        text: "Pick a taste to style by — a brand, an influencer, a magazine. It studies the reference and dresses you in that language.",
       },
       {
-        text: "No purchase needed either — 'Dress Me' proposes outfits from your existing wardrobe for the occasion: party, date, college, office, casual.",
-      },
-      {
-        text: "You rate the looks. Ratings feed back into every future suggestion, so the stylist learns what you like.",
+        text: "Not buying? 'Dress Me' builds outfits from your closet for any occasion. Rate the looks; it learns what you like.",
       },
     ],
     whyUseful: [
-      "A purchase decision stops being a guess: you see the piece on you, with your clothes, in your taste, before paying.",
-      "v1 works end to end today: wardrobe, try-on, stylist and taste engine.",
-      "Where it points: launch through fashion influencers, then a retailer plug-in — a 'see it on you' button inside the store itself, no link-pasting.",
+      "Turns a blind online purchase into a decision you can see.",
+      "Working end to end today: wardrobe, try-on, stylist and taste engine.",
+      "Next: a 'see it on you' button living inside the store itself.",
     ],
     techNotes:
       "Next.js + SQLite, local-first. Wardrobe import scans purchase SMS/email. Try-on renders via IDM-VTON with a Gemini fallback. Taste anchors distilled with vision AI into structured cards, compiled into per-occasion style briefs.",
@@ -95,36 +89,34 @@ export const projects: Project[] = [
     status: "In development",
     hook: "A gym plan that knows your breaking points — reported by voice in three minutes a day.",
     whyItExists: [
-      "I'm new to the gym. I didn't know which exercises, which weights, or how to progress. A googled plan is generic — it doesn't know what I can lift or where I break.",
-      "Even asking an AI chatbot doesn't fix it: give it your weight and it still has no idea how much you can push. The plan has to come from a system that learns you.",
+      "Every beginner's gym plan is a generic template. It doesn't know what you can lift, where you fail, or how you ate yesterday — so it can't answer the only question that matters: what should I do tomorrow?",
     ],
     whatItSolves: [
-      "Generic plans ignore the only data that matters: your real performance. FitForge registers it — 50 kg lat pulldown at breaking point, 35 kg Romanian deadlift near limit — and remembers.",
-      "From failure points, strength curve and goals (broader shoulders, thicker wrists), it builds the plan around you — including muscles it infers are underdeveloped from what you can't lift.",
-      "Food and training stop being separate apps. Skipped dinner last night? Tomorrow's session adjusts so recovery isn't wrecked.",
+      "FitForge learns your real numbers — the weight where each lift breaks down — and builds the next session around them.",
+      "Food rides the same loop: eat badly or skip a meal, and tomorrow's training adjusts so recovery holds.",
     ],
     whoItsFor: [
-      "Gym newcomers with no starting point, flummoxed by the wall of conflicting advice online.",
-      "People who can't afford a personal trainer — or would rather not depend on one.",
+      "Gym newcomers with no starting point, drowning in conflicting advice.",
+      "Anyone who can't afford a trainer — or would rather not need one.",
     ],
     howItWorks: [
       {
-        text: "Open the app: today's routine is already there, with your weights and your progression — no remembering what you lifted last week.",
+        text: "Open the app and today's session is already there — your weights, and where to push next.",
       },
       {
-        text: "Train, then report your day by voice in two–three minutes: 'lat pulldown 52.5 kilos, one set of ten, difficulty eight.' No typing. It parses, logs and remembers.",
+        text: "Report your day by voice in three minutes: 'lat pulldown 52.5, ten reps, difficulty eight.' No typing.",
       },
       {
-        text: "Meals go into the same report. It knows the actual kitchen — induction only, no stove, no airfryer — so it never suggests food you can't cook, and it tracks what a packet of chips does to your protein goal.",
+        text: "Log meals the same way. It knows your kitchen — induction only, no stove — and never suggests food you can't cook.",
       },
       {
-        text: "Tomorrow gets generated from all of it: performance, food, recovery. Training and nutrition move together.",
+        text: "Tomorrow is generated from all of it: performance, food, recovery.",
       },
     ],
     whyUseful: [
-      "Three minutes of talking a day replaces a trainer's check-in, a workout log and a meal tracker.",
-      "The plan is personal in the only way that counts: built from your measured limits, not a template.",
-      "Designed next: a form-video dropdown on every suggested exercise — for beginners who don't want to ask.",
+      "Three minutes of talking replaces a trainer check-in, a workout log and a meal tracker.",
+      "The plan comes from your measured limits, not a template.",
+      "Next: a form video on every exercise, for when you don't want to ask.",
     ],
     techNotes:
       "Next.js, offline-first local storage with last-write-wins sync to Supabase, magic-link auth. Voice logging runs through a local speech pipeline. Built around real personal constraints, including low bone density.",
@@ -151,38 +143,37 @@ export const projects: Project[] = [
     hook: "Indian insurance has no referral programs — regulation makes them dangerous. This is a full working answer to that.",
     liveUrl: "https://plum-referral-engine.vercel.app",
     whyItExists: [
-      "Referral programs don't exist in Indian insurance. Not because nobody thought of it — because regulation makes the standard playbook dangerous.",
-      "Normal referral mechanics reward both sides. Under Indian insurance rules, rewarding the referred party is the legally risky part. The working thesis: reward only the referrer, in non-cash form — Zomato coupons, Amazon vouchers — and keep a regulator-safe distance.",
+      "Referred customers are the warmest, cheapest growth an insurer can get. Yet Indian insurance has almost no referral programs — regulation makes the usual playbook legally dangerous.",
     ],
     whatItSolves: [
-      "Referred customers arrive with personal trust — the cheapest, warmest acquisition an insurer can get. Plum had no system to capture it.",
-      "The hard part isn't the tech; it's designing rewards that motivate without attracting legal attention. Too generous, or the wrong form, and the program itself becomes the risk.",
+      "Reward both sides like every other industry does, and you've built a compliance problem.",
+      "Plum Referral Engine threads the needle: reward only the referrer, in vouchers not cash — keeping a regulator-safe distance while still turning happy customers into growth.",
     ],
     whoItsFor: [
-      "Plum's existing customers — turned into a distribution channel at the moments they're happiest.",
-      "Plum's sales agents — because the sharpest insight in the system is that people don't refer a company, they refer the person who closed them. Referrals route back to that agent.",
+      "Plum's customers — asked to refer at the moment they're happiest, not at random.",
+      "Plum's sales agents — people refer whoever closed them, so referrals route straight back to that agent.",
     ],
     howItWorks: [
       {
-        text: "The ask fires at peak-satisfaction moments — just became a paid customer, just used a perk, just had a claim paid. Not random spam.",
+        text: "The ask fires at peak-satisfaction moments — a policy bought, a claim paid, a perk used.",
       },
       {
-        text: "Each referral message is written by an LLM engine (Groq) from the customer's own data — personalized, not a template blast.",
+        text: "Each message is written by an LLM (Groq) from the customer's own data — personal, not a blast.",
       },
       {
-        text: "A signup is not a successful referral. It counts when the referred person shows real intent — gets on a call, through to taking a policy. No junk referrals.",
+        text: "A signup doesn't count. It qualifies only when the referred person shows real intent, through to taking a policy.",
       },
       {
-        text: "First successful referral pays a ₹500 gateway reward regardless — built to convert even people who never refer.",
+        text: "The first qualified referral pays a ₹500 gateway reward — enough to move people who'd never normally refer.",
       },
       {
-        text: "Insurance converts slowly, so the pipeline keeps paying: each friend who eventually closes triggers a reminder and a further reward. One sharing burst can earn multiple times.",
+        text: "Insurance converts slowly, so the pipeline keeps paying: every later friend who closes triggers another reward.",
       },
     ],
     whyUseful: [
-      "The full journey runs end to end on the deployed site: share, attribute, qualify, reward.",
-      "Honest status: it runs on mock data. Wiring it to Plum's production database, official WhatsApp sending and real payouts is the remaining step — it was ideated and built during my internship, not adopted.",
-      "What it proves: the regulatory constraint has a workable product answer, designed down to reward psychology and agent routing.",
+      "The full journey runs end to end on the live prototype: share, attribute, qualify, reward.",
+      "Runs on mock data today — production database, WhatsApp sending and payouts are the remaining wiring.",
+      "Proves a hard regulatory constraint has a real product answer — down to the reward psychology.",
     ],
     techNotes:
       "Next.js + Supabase. Webhook-driven attribution, DB triggers for referral qualification and 30-day expiry, reward tiering, Groq-personalized messaging. Hardened with RLS and server-side data routes.",
