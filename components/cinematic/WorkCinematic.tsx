@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import type { Project } from "@/lib/projects";
 
@@ -38,17 +39,30 @@ export default function WorkCinematic({ projects }: { projects: Project[] }) {
                   {item.title}
                 </span>
                 <span className="col-span-10 col-start-3 text-ink-muted md:col-span-4 md:col-start-auto">
-                  {item.oneLiner}
+                  {item.hook ?? item.oneLiner}
                 </span>
                 <span className="col-span-10 col-start-3 flex items-baseline justify-between font-mono text-sm text-ink-muted md:col-span-2 md:col-start-auto md:justify-end md:gap-4">
-                  {item.status}
+                  <span className="transition-colors group-hover:text-accent">
+                    View project
+                  </span>
                   <span
                     aria-hidden
                     className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
                   >
-                    ↗
+                    →
                   </span>
                 </span>
+                {item.thumbnail && (
+                  <span className="col-span-10 col-start-3 mt-2 block max-w-[280px] border border-hairline opacity-70 transition-opacity duration-300 group-hover:opacity-100 md:col-span-3 md:col-start-2 md:mt-4">
+                    <Image
+                      src={item.thumbnail}
+                      alt={`${item.title} screen`}
+                      width={560}
+                      height={350}
+                      className="w-full"
+                    />
+                  </span>
+                )}
               </Link>
             </motion.div>
           ))}
