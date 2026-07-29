@@ -1,9 +1,134 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getProject, projects } from "@/lib/projects";
+import Image from "next/image";
+import { getProject, projects, type Project } from "@/lib/projects";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
+}
+
+function Section({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="mt-12 grid gap-6 border-t border-hairline pt-12 md:grid-cols-12 md:gap-4 md:pt-16">
+      <h2 className="font-mono text-sm text-ink-muted md:col-span-3">
+        {label}
+      </h2>
+      <div className="md:col-span-9">{children}</div>
+    </div>
+  );
+}
+
+function Paras({ items }: { items: string[] }) {
+  return (
+    <div className="max-w-[62ch] space-y-4">
+      {items.map((t) => (
+        <p key={t} className="leading-relaxed">
+          {t}
+        </p>
+      ))}
+    </div>
+  );
+}
+
+function Bullets({ items }: { items: string[] }) {
+  return (
+    <ul className="max-w-[62ch] space-y-3">
+      {items.map((t) => (
+        <li key={t} className="flex gap-3 leading-relaxed">
+          <span className="text-accent">—</span>
+          {t}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function Story({ project }: { project: Project }) {
+  return (
+    <>
+      {project.whyItExists && (
+        <Section label="Why it exists">
+          <Paras items={project.whyItExists} />
+        </Section>
+      )}
+      {project.whatItSolves && (
+        <Section label="What it solves">
+          <Paras items={project.whatItSolves} />
+        </Section>
+      )}
+      {project.whoItsFor && (
+        <Section label="Who it's for">
+          <Bullets items={project.whoItsFor} />
+        </Section>
+      )}
+      {project.howItWorks && (
+        <Section label="How it works">
+          <ol className="max-w-[62ch] space-y-10">
+            {project.howItWorks.map((step, i) => (
+              <li key={step.text} className="space-y-4">
+                <div className="flex gap-4">
+                  <span className="font-mono text-sm text-accent">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <p className="leading-relaxed">{step.text}</p>
+                </div>
+                {step.image && (
+                  <figure className="border border-hairline">
+                    <Image
+                      src={step.image}
+                      alt={step.caption ?? step.text}
+                      width={1200}
+                      height={750}
+                      className="w-full"
+                    />
+                    {step.caption && (
+                      <figcaption className="border-t border-hairline px-4 py-2 font-mono text-xs text-ink-muted">
+                        {step.caption}
+                      </figcaption>
+                    )}
+                  </figure>
+                )}
+              </li>
+            ))}
+          </ol>
+        </Section>
+      )}
+      {project.whyUseful && (
+        <Section label="Why it's useful">
+          <Bullets items={project.whyUseful} />
+        </Section>
+      )}
+      {project.techNotes && (
+        <Section label="Under the hood">
+          <p className="max-w-[62ch] font-mono text-sm leading-relaxed text-ink-muted">
+            {project.techNotes}
+          </p>
+        </Section>
+      )}
+    </>
+  );
+}
+
+function Legacy({ project }: { project: Project }) {
+  return (
+    <>
+      <Section label="Problem">
+        <p className="max-w-[62ch] leading-relaxed">{project.problem}</p>
+      </Section>
+      <Section label="Build">
+        <Bullets items={project.build} />
+      </Section>
+      <Section label="Results">
+        <Bullets items={project.metrics} />
+      </Section>
+    </>
+  );
 }
 
 export default async function CaseStudy({
@@ -14,6 +139,8 @@ export default async function CaseStudy({
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) notFound();
+
+  const hasStory = Boolean(project.whyItExists?.length);
 
   return (
     <>
@@ -46,47 +173,46 @@ export default async function CaseStudy({
             <p className="mt-4 max-w-[52ch] text-lg leading-relaxed text-ink-muted">
               {project.oneLiner}
             </p>
-            <span className="mt-4 inline-block border border-hairline px-3 py-1 font-mono text-sm text-ink-muted">
-              {project.status}
-            </span>
+            <div className="mt-6 flex flex-wrap items-center gap-4">
+              <span className="inline-block border border-hairline px-3 py-1 font-mono text-sm text-ink-muted">
+                {project.status}
+              </span>
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="bg-accent px-4 py-1.5 font-mono text-sm text-accent-ink transition-transform duration-200 hover:scale-[1.03]"
+                >
+                  Visit live ↗
+                </a>
+              )}
+            </div>
           </div>
         </div>
 
-        <div className="mt-16 grid gap-12 border-t border-hairline pt-12 md:mt-24 md:grid-cols-12 md:gap-4 md:pt-16">
-          <h2 className="font-mono text-sm text-ink-muted md:col-span-3">
-            Problem
-          </h2>
-          <p className="max-w-[62ch] leading-relaxed md:col-span-9">
-            {project.problem}
+        {hasStory ? <Story project={project} /> : <Legacy project={project} />}
+
+        <div className="mt-16 border-t border-hairline pt-12 md:mt-24 md:pt-16">
+          <p className="font-display text-2xl font-medium tracking-tight">
+            Want the full story?
           </p>
-        </div>
-
-        <div className="mt-12 grid gap-12 border-t border-hairline pt-12 md:grid-cols-12 md:gap-4 md:pt-16">
-          <h2 className="font-mono text-sm text-ink-muted md:col-span-3">
-            Build
-          </h2>
-          <ul className="max-w-[62ch] space-y-3 md:col-span-9">
-            {project.build.map((b) => (
-              <li key={b} className="flex gap-3 leading-relaxed">
-                <span className="text-accent">—</span>
-                {b}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="mt-12 grid gap-12 border-t border-hairline pt-12 md:grid-cols-12 md:gap-4 md:pb-16 md:pt-16">
-          <h2 className="font-mono text-sm text-ink-muted md:col-span-3">
-            Results
-          </h2>
-          <ul className="max-w-[62ch] space-y-3 md:col-span-9">
-            {project.metrics.map((m) => (
-              <li key={m} className="flex gap-3 leading-relaxed">
-                <span className="text-accent">—</span>
-                {m}
-              </li>
-            ))}
-          </ul>
+          <div className="mt-6 flex flex-wrap gap-4">
+            <a
+              href="mailto:urgian27@gmail.com"
+              className="bg-accent px-6 py-3 font-mono text-sm text-accent-ink transition-transform duration-200 hover:scale-[1.03]"
+            >
+              Email me
+            </a>
+            <a
+              href="https://www.linkedin.com/in/urgian-padma/"
+              target="_blank"
+              rel="noreferrer"
+              className="border border-hairline px-6 py-3 font-mono text-sm transition-colors hover:border-accent hover:text-accent"
+            >
+              LinkedIn DM
+            </a>
+          </div>
         </div>
       </main>
     </>
