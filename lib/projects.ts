@@ -2,6 +2,7 @@ export type HowItWorksStep = {
   text: string;
   image?: string; // path under public/, e.g. /work/drizzler/01-wardrobe.png
   caption?: string;
+  phone?: boolean; // true = portrait phone screenshot, render in a narrow centered frame
 };
 
 export type Project = {
@@ -34,6 +35,7 @@ export const projects: Project[] = [
     oneLiner: "AI personal stylist that knows your wardrobe and your taste",
     status: "v1 working end to end",
     hook: "The trial room online shopping never had — see any purchase styled with your own wardrobe, on you, before you pay.",
+    thumbnail: "/work/drizzler/style-this.jpg",
     whyItExists: [
       "Online shopping deleted the trial room. You can't feel a piece on your body — and you certainly can't see it against everything already in your closet. But nobody wears one item alone, so every purchase is a quiet gamble: will this actually work with what I own?",
     ],
@@ -48,12 +50,18 @@ export const projects: Project[] = [
     howItWorks: [
       {
         text: "Your wardrobe loads itself from purchase history — exact products, exact sizes. Add a few photos of yourself so outfits render on your body.",
+        image: "/work/drizzler/wardrobe.jpg",
+        caption: "The wardrobe — 38 pieces imported from purchase history, each sized and categorized.",
       },
       {
         text: "Shopping? Paste the product link. Drizzler builds full looks around it from clothes you already own.",
+        image: "/work/drizzler/style-this.jpg",
+        caption: "Paste a link → outfits built from what you own, tried on you. Verdict: works with 8 of 38 items across 6 combos.",
       },
       {
         text: "Pick a taste to style by — a brand, an influencer, a magazine. It studies the reference and dresses you in that language.",
+        image: "/work/drizzler/taste.jpg",
+        caption: "Taste anchors — each brand is researched, then distilled into a per-occasion style brief the stylist follows.",
       },
       {
         text: "Not buying? 'Dress Me' builds outfits from your closet for any occasion. Rate the looks; it learns what you like.",
@@ -88,6 +96,7 @@ export const projects: Project[] = [
     oneLiner: "Training and nutrition that learns your actual limits",
     status: "In development",
     hook: "A gym plan that knows your breaking points — reported by voice in three minutes a day.",
+    thumbnail: "/work/fitforge/today.jpg",
     whyItExists: [
       "Every beginner's gym plan is a generic template. It doesn't know what you can lift, where you fail, or how you ate yesterday — so it can't answer the only question that matters: what should I do tomorrow?",
     ],
@@ -102,9 +111,15 @@ export const projects: Project[] = [
     howItWorks: [
       {
         text: "Open the app and today's session is already there — your weights, and where to push next.",
+        image: "/work/fitforge/today.jpg",
+        caption: "Today's session, ready on open — your lifts, live training card, and the voice logger up top.",
+        phone: true,
       },
       {
-        text: "Report your day by voice in three minutes: 'lat pulldown 52.5, ten reps, difficulty eight.' No typing.",
+        text: "Report your day by voice in three minutes: 'lat pulldown 52.5, ten reps, difficulty eight.' No typing. Every set is logged and remembered.",
+        image: "/work/fitforge/progress.jpg",
+        caption: "What it remembers: estimated 1-rep maxes per lift, volume trend, every session logged.",
+        phone: true,
       },
       {
         text: "Log meals the same way. It knows your kitchen — induction only, no stove — and never suggests food you can't cook.",
@@ -142,6 +157,7 @@ export const projects: Project[] = [
     status: "Working prototype on mock data",
     hook: "Indian insurance has no referral programs — regulation makes them dangerous. This is a full working answer to that.",
     liveUrl: "https://plum-referral-engine.vercel.app",
+    thumbnail: "/work/plum-referral-engine/analytics.jpg",
     whyItExists: [
       "Referred customers are the warmest, cheapest growth an insurer can get. Yet Indian insurance has almost no referral programs — regulation makes the usual playbook legally dangerous.",
     ],
@@ -156,18 +172,26 @@ export const projects: Project[] = [
     howItWorks: [
       {
         text: "The ask fires at peak-satisfaction moments — a policy bought, a claim paid, a perk used.",
+        image: "/work/plum-referral-engine/pipeline.jpg",
+        caption: "The pipeline: import the customer base, stage only those past the delay, send the referral nudge.",
       },
       {
-        text: "Each message is written by an LLM (Groq) from the customer's own data — personal, not a blast.",
+        text: "Each message is written by an LLM (Groq) from the customer's own data — personal, not a blast. Behind it, one connected flow runs the whole loop.",
+        image: "/work/plum-referral-engine/diagram.png",
+        caption: "The whole engine, end to end — import, personalize, send, attribute, qualify, reward, repeat.",
       },
       {
         text: "A signup doesn't count. It qualifies only when the referred person shows real intent, through to taking a policy.",
       },
       {
         text: "The first qualified referral pays a ₹500 gateway reward — enough to move people who'd never normally refer.",
+        image: "/work/plum-referral-engine/portal.jpg",
+        caption: "The customer's Refer & Earn view — unique link, tiered reward ladder, ₹500 gateway reward.",
       },
       {
         text: "Insurance converts slowly, so the pipeline keeps paying: every later friend who closes triggers another reward.",
+        image: "/work/plum-referral-engine/analytics.jpg",
+        caption: "Analytics: the referral funnel and acquisition cost — 64% cheaper than paid ads, ₹900 saved per customer.",
       },
     ],
     whyUseful: [

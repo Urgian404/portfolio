@@ -53,13 +53,13 @@ export default function WorkCinematic({ projects }: { projects: Project[] }) {
                   </span>
                 </span>
                 {item.thumbnail && (
-                  <span className="col-span-10 col-start-3 mt-2 block max-w-[280px] border border-hairline opacity-70 transition-opacity duration-300 group-hover:opacity-100 md:col-span-3 md:col-start-2 md:mt-4">
+                  <span className="col-span-10 col-start-3 mt-2 block aspect-[16/10] max-w-[280px] overflow-hidden border border-hairline opacity-70 transition-opacity duration-300 group-hover:opacity-100 md:col-span-3 md:col-start-2 md:mt-4">
                     <Image
                       src={item.thumbnail}
                       alt={`${item.title} screen`}
                       width={560}
                       height={350}
-                      className="w-full"
+                      className="h-full w-full object-cover object-top"
                     />
                   </span>
                 )}

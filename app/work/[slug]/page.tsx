@@ -79,13 +79,17 @@ function Story({ project }: { project: Project }) {
                   <p className="leading-relaxed">{step.text}</p>
                 </div>
                 {step.image && (
-                  <figure className="border border-hairline">
+                  <figure
+                    className={`overflow-hidden border border-hairline ${
+                      step.phone ? "mx-auto max-w-[340px]" : ""
+                    }`}
+                  >
                     <Image
                       src={step.image}
                       alt={step.caption ?? step.text}
                       width={1200}
                       height={750}
-                      className="w-full"
+                      className="h-auto w-full"
                     />
                     {step.caption && (
                       <figcaption className="border-t border-hairline px-4 py-2 font-mono text-xs text-ink-muted">
