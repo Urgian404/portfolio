@@ -9,15 +9,15 @@ import {
   useReducedMotion,
 } from "framer-motion";
 
-const FIRST = "URGIAN";
-const LAST = "PADMA";
+const FIRST = "Urgian";
+const LAST = "Padma";
 
 /**
- * Cinematic hero: a tall scroll runway with a pinned viewport.
- * The two name lines start split to opposite edges — URGIAN off left,
- * PADMA off right — and scrolling slides them into the center as the
- * hero exits. Portrait slot intentionally empty until the new image
- * (or the Seedance orbit sequence) arrives; the scroll rig stays.
+ * Monograph hero: a tall scroll runway with a pinned viewport.
+ * The name is set in Fraunces — "Urgian" roman, "Padma" in calligraphic
+ * italic. The two lines start split to opposite edges and slide into the
+ * center as the hero exits. Portrait slot intentionally empty until the
+ * new image arrives; the scroll rig stays.
  */
 export default function Hero() {
   const runway = useRef<HTMLDivElement>(null);
@@ -33,17 +33,17 @@ export default function Hero() {
     mass: 0.35,
   });
 
-  // URGIAN slides left → center; PADMA slides right → center
-  const firstX = useTransform(progress, [0, 0.85], ["-14%", "0%"]);
-  const lastX = useTransform(progress, [0, 0.85], ["14%", "0%"]);
+  // Urgian slides left → center; Padma slides right → center
+  const firstX = useTransform(progress, [0, 0.85], ["-12%", "0%"]);
+  const lastX = useTransform(progress, [0, 0.85], ["12%", "0%"]);
 
   // Lines pull together vertically as they converge
-  const gap = useTransform(progress, [0, 0.85], ["0.12em", "0em"]);
+  const gap = useTransform(progress, [0, 0.85], ["0.1em", "-0.04em"]);
 
   // Subtitle + scroll cue fade out as the scrub takes over
   const cueOpacity = useTransform(progress, [0, 0.25], [1, 0]);
   // Stage dims at the end, handing off to the next section
-  const stageOpacity = useTransform(progress, [0.85, 1], [1, 0.2]);
+  const stageOpacity = useTransform(progress, [0.85, 1], [1, 0.25]);
 
   return (
     <div ref={runway} className="relative h-[220vh]">
@@ -51,13 +51,13 @@ export default function Hero() {
         style={{ opacity: stageOpacity }}
         className="sticky top-0 flex h-dvh flex-col items-center justify-center overflow-hidden"
       >
-        {/* Emerald atmosphere */}
+        {/* Faint accent wash — a breath of pine, not a glow */}
         <div
           aria-hidden
-          className="absolute left-1/2 top-1/2 h-[80vmin] w-[80vmin] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-25 blur-[110px]"
+          className="absolute left-1/2 top-1/2 h-[70vmin] w-[110vmin] -translate-x-1/2 -translate-y-1/2 rounded-[50%] opacity-70 blur-[120px]"
           style={{
             background:
-              "radial-gradient(closest-side, var(--glow), transparent 70%)",
+              "radial-gradient(closest-side, var(--wash), transparent 72%)",
           }}
         />
 
@@ -68,7 +68,7 @@ export default function Hero() {
         >
           <motion.h1
             style={{ x: reduced ? undefined : firstX }}
-            className="w-full text-left font-condensed text-[length:var(--text-hero)] leading-[0.85] tracking-[0.01em] will-change-transform"
+            className="w-full text-left font-display text-[length:var(--text-hero)] font-light leading-[0.92] tracking-[-0.02em] will-change-transform"
             aria-label="Urgian Padma"
           >
             <Letters word={FIRST} from={-1} />
@@ -76,14 +76,9 @@ export default function Hero() {
           <motion.div
             style={{ x: reduced ? undefined : lastX }}
             aria-hidden
-            className="w-full text-right font-condensed text-[length:var(--text-hero)] leading-[0.85] tracking-[0.01em] text-transparent will-change-transform"
+            className="w-full text-right font-display text-[length:var(--text-hero)] font-normal italic leading-[0.92] tracking-[-0.02em] text-accent will-change-transform"
           >
-            <span
-              style={{ WebkitTextStroke: "1.5px var(--ink)" }}
-              className="opacity-90"
-            >
-              <Letters word={LAST} from={1} />
-            </span>
+            <Letters word={LAST} from={1} italic />
           </motion.div>
         </motion.div>
 
@@ -92,14 +87,14 @@ export default function Hero() {
           style={{ opacity: cueOpacity }}
           className="absolute bottom-10 z-40 flex w-full items-end justify-between px-[var(--gutter)]"
         >
-          <p className="max-w-[34ch] text-sm leading-relaxed text-ink-muted md:text-base">
+          <p className="max-w-[38ch] text-sm leading-relaxed text-ink-muted md:text-base">
             Builder. Marketing, AI and the space between —{" "}
-            <span className="text-ink">shipping real products</span> and
-            winning national case finals on the side.
+            <span className="calligraphy text-ink">shipping real products</span>{" "}
+            and winning national case finals on the side.
           </p>
-          <div className="hidden items-center gap-3 font-mono text-xs text-ink-muted md:flex">
+          <div className="hidden items-center gap-3 font-mono text-xs tracking-wider text-ink-muted uppercase md:flex">
             <span className="inline-block h-8 w-px animate-pulse bg-accent" />
-            SCROLL
+            Scroll
           </div>
         </motion.div>
       </motion.section>
@@ -108,13 +103,25 @@ export default function Hero() {
 }
 
 /** Letter-by-letter track-in on load. */
-function Letters({ word, from }: { word: string; from: -1 | 1 }) {
+function Letters({
+  word,
+  from,
+  italic = false,
+}: {
+  word: string;
+  from: -1 | 1;
+  italic?: boolean;
+}) {
   return (
-    <span className="inline-flex overflow-hidden py-[0.06em]">
+    <span
+      className={`inline-flex overflow-hidden py-[0.08em] ${
+        italic ? "pr-[0.12em]" : ""
+      }`}
+    >
       {word.split("").map((ch, i) => (
         <motion.span
           key={i}
-          initial={{ y: "110%", opacity: 0, x: from * 24 }}
+          initial={{ y: "110%", opacity: 0, x: from * 20 }}
           animate={{ y: 0, opacity: 1, x: 0 }}
           transition={{
             delay: 0.25 + i * 0.07,

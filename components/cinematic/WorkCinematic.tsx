@@ -12,8 +12,8 @@ export default function WorkCinematic({ projects }: { projects: Project[] }) {
   return (
     <section id="work" className="px-[var(--gutter)] py-[var(--section)]">
       <div className="mx-auto max-w-[1400px]">
-        <h2 className="mb-14 font-condensed text-[clamp(2.5rem,7vw,5.5rem)] leading-none">
-          PROOF OF WORK
+        <h2 className="mb-14 font-display text-[clamp(2.5rem,7vw,5.25rem)] font-light leading-[0.95] tracking-[-0.02em]">
+          Proof of <span className="calligraphy text-accent">work</span>
         </h2>
         <div className="border-t border-hairline">
           {projects.map((item, i) => (

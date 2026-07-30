@@ -2,19 +2,20 @@
 
 /*
   Derived from lib/design.ts — the token source of truth.
-  Cinematic theme: ink-black canvas, cream type, emerald accent.
-  One forced theme — the whole site lives in the dark.
+  Monograph theme: warm porcelain paper, sepia-black ink, one pine accent.
+  Serif display (Fraunces) with a calligraphic italic; mono for labels.
+  One forced theme — the whole site lives on light paper.
 */
 
 :root {
-  /* color.cinematic */
-  --paper: #0a0a0b;
-  --ink: #f1e9db;
-  --ink-muted: #8f8b80;
-  --hairline: #26261f;
-  --accent: #2fd08c;
-  --accent-ink: #06251a;
-  --glow: rgba(47, 208, 140, 0.55);
+  /* color.editorial */
+  --paper: #f4f1e9;
+  --ink: #211c17;
+  --ink-muted: #6e665a;
+  --hairline: #dfd8c9;
+  --accent: #2e5a4b;
+  --accent-ink: #f4f1e9;
+  --wash: rgba(46, 90, 75, 0.1);
 
   /* space */
   --section: clamp(5rem, 12vh, 9rem);
@@ -33,8 +34,7 @@
   --color-accent: var(--accent);
   --color-accent-ink: var(--accent-ink);
 
-  --font-display: var(--font-display), sans-serif;
-  --font-condensed: var(--font-condensed), sans-serif;
+  --font-display: var(--font-display), Georgia, serif;
   --font-sans: var(--font-body), sans-serif;
   --font-mono: var(--font-mono-plex), monospace;
 
@@ -42,8 +42,8 @@
   --text-display-xl: clamp(2.75rem, 7vw, 5.5rem);
   --text-display-l: clamp(2rem, 4.5vw, 3.5rem);
   --text-display-m: clamp(1.5rem, 3vw, 2.25rem);
-  /* cinematic hero scale — fills the viewport width */
-  --text-hero: clamp(4.5rem, 16.5vw, 15rem);
+  /* editorial serif hero scale */
+  --text-hero: clamp(3.75rem, 12vw, 11rem);
 }
 
 html {
@@ -65,31 +65,30 @@ body {
   color: var(--accent-ink);
 }
 
-/* Subtle film grain over everything */
+/*
+  Calligraphy treatment — the signature. Emphasized words are set in
+  Fraunces italic with a soft optical grade, tightened tracking, and a
+  touch of the accent. Apply `.calligraphy` to any word or phrase.
+*/
+.calligraphy {
+  font-family: var(--font-display), Georgia, serif;
+  font-style: italic;
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 60, "WONK" 1;
+  letter-spacing: -0.01em;
+}
+
+/* Faint static print grain — warmth on paper, not a moving film */
 .grain::after {
   content: "";
   position: fixed;
-  inset: -100%;
+  inset: 0;
   z-index: 60;
   pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 256px 256px;
-  opacity: 0.05;
-  animation: grain-shift 0.9s steps(4) infinite;
-}
-
-@keyframes grain-shift {
-  0% { transform: translate(0, 0); }
-  25% { transform: translate(-2%, 1%); }
-  50% { transform: translate(1%, -2%); }
-  75% { transform: translate(-1%, 2%); }
-  100% { transform: translate(2%, -1%); }
-}
-
-/* Emerald rim treatment for the portrait cutout */
-.portrait-rim {
-  filter: drop-shadow(0 0 42px var(--glow))
-    drop-shadow(0 0 6px rgba(47, 208, 140, 0.35));
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  mix-blend-mode: multiply;
+  opacity: 0.025;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -100,8 +99,5 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-  .grain::after {
-    animation: none;
   }
 }

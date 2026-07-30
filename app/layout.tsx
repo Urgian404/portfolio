@@ -1,22 +1,14 @@
 import type { Metadata } from "next";
-import {
-  Bricolage_Grotesque,
-  Instrument_Sans,
-  IBM_Plex_Mono,
-  Anton,
-} from "next/font/google";
+import { Fraunces, Instrument_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
-const display = Bricolage_Grotesque({
+// Fraunces — the literary display + calligraphic italic. One serif carries
+// hero, headlines and every italicized emphasis word.
+const display = Fraunces({
   variable: "--font-display",
   subsets: ["latin"],
-  axes: ["opsz", "wdth"],
-});
-
-const condensed = Anton({
-  variable: "--font-condensed",
-  subsets: ["latin"],
-  weight: "400",
+  style: ["normal", "italic"],
+  axes: ["opsz", "SOFT", "WONK"],
 });
 
 const body = Instrument_Sans({
@@ -44,7 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${display.variable} ${body.variable} ${mono.variable} ${condensed.variable} h-full antialiased`}
+      className={`${display.variable} ${body.variable} ${mono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

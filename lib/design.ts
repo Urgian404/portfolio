@@ -1,9 +1,10 @@
 /**
  * Design tokens — single source of truth.
- * Aesthetic: "cinematic dossier" — award-site energy on a technical spine.
- * Ink-black canvas, cream type, one emerald accent, condensed display
- * for hero moments, grotesque for structure, mono for metrics/labels,
- * hairline rules, big numerals, film grain, scroll-driven motion.
+ * Aesthetic: "monograph" — a light, literary-editorial treatment. Warm
+ * porcelain paper, soft sepia-black ink, one deep pine accent. A single
+ * serif (Fraunces) carries the display, and its italic is the calligraphy:
+ * emphasized words are set in flowing italic. Mono stays as a quiet
+ * technical spine for labels. Hairline rules, generous space, print grain.
  *
  * globals.css derives its CSS variables and @theme mapping from these
  * values. If you change a value here, change it there too — the comment
@@ -11,27 +12,26 @@
  */
 
 export const color = {
-  cinematic: {
-    paper: "#0A0A0B", // page canvas — ink black
-    ink: "#F1E9DB", // primary text — cream
-    inkMuted: "#8F8B80", // secondary text
-    hairline: "#26261F", // 1px rules
-    accent: "#2FD08C", // emerald — sole accent
-    accentInk: "#06251A", // text on accent surfaces
-    glow: "rgba(47, 208, 140, 0.55)", // portrait rim light
+  editorial: {
+    paper: "#F4F1E9", // page canvas — warm porcelain
+    ink: "#211C17", // primary text — soft sepia-black
+    inkMuted: "#6E665A", // secondary text — warm grey
+    hairline: "#DFD8C9", // 1px rules
+    accent: "#2E5A4B", // deep pine — sole accent
+    accentInk: "#F4F1E9", // text on accent surfaces (porcelain on pine)
+    wash: "rgba(46, 90, 75, 0.10)", // faint accent wash for atmosphere
   },
 } as const;
 
 export const font = {
-  condensed: "Anton", // hero display — massive condensed statements
-  display: "Bricolage Grotesque", // section headlines — characterful grotesque
+  display: "Fraunces", // hero, headlines and every italic emphasis word
   body: "Instrument Sans", // prose
-  mono: "IBM Plex Mono", // metrics, labels, figures — dossier voice
+  mono: "IBM Plex Mono", // metrics, labels, figures — technical spine
 } as const;
 
 /** Type scale — display sizes are clamp()ed in CSS for fluid behavior. */
 export const type = {
-  hero: "clamp(4.5rem, 16.5vw, 15rem)", // cinematic name treatment
+  hero: "clamp(3.75rem, 12vw, 11rem)", // editorial serif name treatment
   displayXL: "clamp(2.75rem, 7vw, 5.5rem)", // hero headline
   displayL: "clamp(2rem, 4.5vw, 3.5rem)", // section headlines
   displayM: "clamp(1.5rem, 3vw, 2.25rem)", // case-study headers

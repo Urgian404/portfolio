@@ -10,10 +10,10 @@ export default function Finale() {
     >
       <div
         aria-hidden
-        className="absolute left-1/2 top-1/2 h-[70vmin] w-[70vmin] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20 blur-[120px]"
+        className="absolute left-1/2 top-1/2 h-[60vmin] w-[100vmin] -translate-x-1/2 -translate-y-1/2 rounded-[50%] opacity-80 blur-[130px]"
         style={{
           background:
-            "radial-gradient(closest-side, var(--glow), transparent 70%)",
+            "radial-gradient(closest-side, var(--wash), transparent 72%)",
         }}
       />
       <div className="relative mx-auto flex max-w-[1400px] flex-col items-center text-center">
@@ -22,11 +22,11 @@ export default function Finale() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-15% 0px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="font-condensed text-[clamp(3rem,10vw,8.5rem)] leading-[0.9]"
+          className="font-display text-[clamp(3rem,10vw,8rem)] font-light leading-[0.98] tracking-[-0.02em]"
         >
-          LET&apos;S BUILD
+          Let&apos;s build
           <br />
-          <span className="text-accent">SOMETHING REAL</span>
+          <span className="calligraphy text-accent">something real</span>
         </motion.h2>
         <div className="mt-12 flex flex-wrap items-center justify-center gap-5">
           <a
