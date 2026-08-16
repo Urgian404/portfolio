@@ -34,14 +34,14 @@ export const projects: Project[] = [
     title: "Drizzler",
     oneLiner: "AI personal stylist that knows your wardrobe and your taste",
     status: "v1 working end to end",
-    hook: "The trial room online shopping never had — see any purchase styled with your own wardrobe, on you, before you pay.",
+    hook: "Online shopping killed the trial room — and even that only judged one piece in a mirror. Drizzler styles any buy against the wardrobe you already own, worn on you, before you pay.",
     thumbnail: "/work/drizzler/style-this.jpg",
     whyItExists: [
-      "Online shopping deleted the trial room. You can't feel a piece on your body — and you certainly can't see it against everything already in your closet. But nobody wears one item alone, so every purchase is a quiet gamble: will this actually work with what I own?",
+      "Shopping moved online and the trial room vanished with it. And even the trial room only ever judged one piece in a mirror — never how it sits with everything already in your closet. Nobody wears one item alone, so every online buy is a gamble: will this actually work with what I own?",
     ],
     whatItSolves: [
-      "Drizzler answers the gamble before you pay. Paste any product link and it styles the piece into full outfits using the clothes you actually own — rendered on you, in a taste you choose.",
-      "It does what a physical trial room can't: judge a buy against your whole wardrobe, not just the mirror.",
+      "Drizzler settles the gamble before you pay. Paste a product link and it builds full outfits around the piece from clothes you already own — worn on you, in a taste you pick.",
+      "It does what no trial room could: score a buy against your whole wardrobe, then hand you every way to wear it.",
     ],
     whoItsFor: [
       "People with plain taste who want to dress better without studying fashion.",

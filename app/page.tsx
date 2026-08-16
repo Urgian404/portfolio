@@ -19,14 +19,11 @@ export default function Home() {
               <a href="#work" className="transition-colors hover:text-accent">
                 Work
               </a>
-              <a
-                href="#achievements"
-                className="transition-colors hover:text-accent"
-              >
-                Achievements
-              </a>
               <a href="#about" className="transition-colors hover:text-accent">
                 About
+              </a>
+              <a href="#record" className="transition-colors hover:text-accent">
+                Record
               </a>
               <a
                 href="#contact"
@@ -44,18 +41,6 @@ export default function Home() {
 
         {/* The dossier — full record, same text and images as always */}
         <main className="mx-auto w-full max-w-[1400px] px-[var(--gutter)]">
-          <CardRail
-            id="achievements"
-            label="Achievements"
-            cards={achievements}
-          />
-          <CardRail
-            id="internships"
-            label="Internships & Live Projects"
-            cards={internships}
-          />
-          <CardRail id="research" label="Projects & Research" cards={research} />
-
           <section
             id="about"
             className="grid gap-8 border-t border-hairline py-[var(--section)] md:grid-cols-12"
@@ -71,6 +56,30 @@ export default function Home() {
               build. This site is a running record of that: what I&apos;ve
               shipped, how, and what it does.
             </p>
+          </section>
+
+          {/* The full record — the fuller dossier, framed under one heading so
+              the three builds stay the star, but always visible. */}
+          <section id="record" className="border-t border-hairline">
+            <div className="flex items-baseline justify-between pt-[var(--section)] pb-10">
+              <h2 className="font-display text-display-m font-light tracking-tight">
+                The full <span className="calligraphy text-accent">record</span>
+              </h2>
+              <span className="hidden font-mono text-sm text-ink-muted sm:inline">
+                Achievements · internships · research
+              </span>
+            </div>
+            <CardRail
+              id="achievements"
+              label="Achievements"
+              cards={achievements}
+            />
+            <CardRail
+              id="internships"
+              label="Internships & Live Projects"
+              cards={internships}
+            />
+            <CardRail id="research" label="Projects & Research" cards={research} />
           </section>
         </main>
 

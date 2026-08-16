@@ -46,7 +46,7 @@ export default function Hero() {
   const stageOpacity = useTransform(progress, [0.85, 1], [1, 0.25]);
 
   return (
-    <div ref={runway} className="relative h-[220vh]">
+    <div ref={runway} className="relative h-[140vh]">
       <motion.section
         style={{ opacity: stageOpacity }}
         className="sticky top-0 flex h-dvh flex-col items-center justify-center overflow-hidden"
