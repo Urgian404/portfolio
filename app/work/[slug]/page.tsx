@@ -7,6 +7,34 @@ export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const project = getProject(slug);
+  if (!project) return {};
+  const description = project.hook ?? project.oneLiner;
+  return {
+    title: `${project.title} — ${project.oneLiner}`,
+    description,
+    openGraph: {
+      type: "article",
+      title: `${project.title} — Urgian Padma`,
+      description,
+      images: project.thumbnail
+        ? [{ url: project.thumbnail, width: 1200, height: 750, alt: `${project.title} screen` }]
+        : [{ url: "/og.png", width: 1200, height: 630, alt: "Urgian Padma — proof of work" }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.title} — Urgian Padma`,
+      description,
+    },
+  };
+}
+
 function Section({
   label,
   children,

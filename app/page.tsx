@@ -49,8 +49,8 @@ export default function Home() {
               About
             </h2>
             <p className="max-w-[58ch] text-lg leading-relaxed md:col-span-8">
-              I&apos;m Urgian Padma. Interested in marketing and AI, and I like
-              being part of good startups. Mostly I like being a{" "}
+              I&apos;m Urgian Padma — IPM at IIM Indore. Interested in
+              marketing and AI, and I like being part of good startups. Mostly I like being a{" "}
               <span className="calligraphy">builder</span> — picking something
               worth making and directing it end to end, using AI as the way I
               build. This site is a running record of that: what I&apos;ve

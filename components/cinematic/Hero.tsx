@@ -87,11 +87,18 @@ export default function Hero() {
           style={{ opacity: cueOpacity }}
           className="absolute bottom-10 z-40 flex w-full items-end justify-between px-[var(--gutter)]"
         >
-          <p className="max-w-[38ch] text-sm leading-relaxed text-ink-muted md:text-base">
-            Builder. Marketing, AI and the space between —{" "}
-            <span className="calligraphy text-ink">shipping real products</span>{" "}
-            and winning national case finals on the side.
-          </p>
+          <div>
+            <p className="max-w-[38ch] text-sm leading-relaxed text-ink-muted md:text-base">
+              Builder. Marketing, AI and the space between —{" "}
+              <span className="calligraphy text-ink">
+                shipping real products
+              </span>{" "}
+              and winning national case finals on the side.
+            </p>
+            <p className="mt-3 font-mono text-xs tracking-wider text-ink-muted uppercase">
+              IPM · IIM Indore
+            </p>
+          </div>
           <div className="hidden items-center gap-3 font-mono text-xs tracking-wider text-ink-muted uppercase md:flex">
             <span className="inline-block h-8 w-px animate-pulse bg-accent" />
             Scroll

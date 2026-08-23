@@ -22,10 +22,64 @@ const mono = IBM_Plex_Mono({
   weight: ["400", "500"],
 });
 
+const SITE_URL = "https://portfolio-roan-pi-35.vercel.app";
+
 export const metadata: Metadata = {
-  title: "Urgian Padma",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Urgian Padma — builder · marketing & AI",
+    template: "%s — Urgian Padma",
+  },
   description:
-    "Builder interested in marketing and AI — a live referral engine, a job-hunt pipeline, an offline-first fitness app.",
+    "Portfolio of Urgian Padma, IPM at IIM Indore. Ships real products end to end — an AI personal stylist, an adaptive training planner, and a referral engine for Indian insurance.",
+  keywords: [
+    "Urgian Padma",
+    "builder",
+    "portfolio",
+    "IIM Indore",
+    "IPM",
+    "marketing",
+    "AI products",
+    "Drizzler",
+    "FitForge",
+    "Plum Referral Engine",
+  ],
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    siteName: "Urgian Padma",
+    title: "Urgian Padma — builder · marketing & AI",
+    description:
+      "Ships real products end to end — an AI personal stylist, an adaptive training planner, and a referral engine for Indian insurance.",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Urgian Padma — proof of work" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Urgian Padma — builder · marketing & AI",
+    description:
+      "Ships real products end to end — an AI stylist, an adaptive training planner, and a referral engine for Indian insurance.",
+    images: ["/og.png"],
+  },
+  robots: { index: true, follow: true },
+};
+
+/** JSON-LD Person schema — the structured data search engines read for
+ *  name queries. Facts only: nothing here that isn't on the page. */
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Urgian Padma",
+  url: SITE_URL,
+  jobTitle: "Builder",
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "Indian Institute of Management Indore",
+  },
+  knowsAbout: ["Marketing", "AI products", "Product building"],
+  sameAs: [
+    "https://www.linkedin.com/in/urgian-padma/",
+    "https://github.com/Urgian404",
+  ],
 };
 
 export default function RootLayout({
@@ -38,7 +92,13 @@ export default function RootLayout({
       lang="en"
       className={`${display.variable} ${body.variable} ${mono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+        {children}
+      </body>
     </html>
   );
 }
