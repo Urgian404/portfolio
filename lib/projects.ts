@@ -11,7 +11,8 @@ export type Project = {
   title: string;
   oneLiner: string;
   status: string;
-  hook?: string; // index-row line, leads with why/impact
+  hook?: string; // index-row lead line, leads with why/impact
+  summary?: string; // index-row explanation — 2-3 sentences of what it actually does
   thumbnail?: string; // index-row image, path under public/
   liveUrl?: string; // renders "Visit live ↗" when set
   // Legacy layout fields — case page falls back to these when story fields absent
@@ -38,6 +39,8 @@ export const projects: Project[] = [
     status: "v1 working end to end",
     hook: "Retailers show clothes on a stock model — they can't know your closet. Drizzler renders any buy on you, styled against what you already own, with a verdict before you pay.",
     pullQuote: "No seller can copy this claim — they don't know your closet.",
+    summary:
+      "Paste a product link and Drizzler renders the piece on your body, styled into full outfits from clothes you already own — then calls buy or skip. A one-time import builds the wardrobe from purchase history, and a taste engine dresses you in the language of brands and influencers you pick. v1 runs end to end: wardrobe, try-on, stylist, taste.",
     thumbnail: "/work/drizzler/style-this.jpg",
     whyItExists: [
       "Shopping moved online and the trial room vanished with it. And even the trial room only ever judged one piece in a mirror — never how it sits with everything already in your closet. Nobody wears one item alone, so every online buy is a gamble: will this actually work with what I own?",
@@ -100,6 +103,8 @@ export const projects: Project[] = [
     status: "In development",
     hook: "A gym plan that knows your breaking points — reported by voice in three minutes a day.",
     pullQuote: "It knows where you fail — and builds tomorrow from it.",
+    summary:
+      "A training and nutrition planner that learns your real limits — the weight where each lift breaks down — and builds the next session from them. The day is reported by voice in about three minutes; meals ride the same loop, so a skipped dinner reshapes tomorrow's training for recovery. Offline-first, built around real constraints.",
     thumbnail: "/work/fitforge/today.jpg",
     whyItExists: [
       "Every beginner's gym plan is a generic template. It doesn't know what you can lift, where you fail, or how you ate yesterday — so it can't answer the only question that matters: what should I do tomorrow?",
@@ -161,6 +166,8 @@ export const projects: Project[] = [
     status: "Working prototype on mock data",
     hook: "Indian insurance has no referral programs — regulation makes them dangerous. This is a full working answer to that.",
     pullQuote: "Reward only the referrer, in vouchers not cash — growth a regulator can live with.",
+    summary:
+      "Indian insurance regulation makes normal referral programs dangerous, so this one rewards only the referrer — in vouchers, never cash. Webhooks attribute every signup, database triggers qualify real intent through to a policy, and an LLM writes each ask from the customer's own data at peak-satisfaction moments. The full journey runs on the deployed prototype, on mock data.",
     liveUrl: "https://plum-referral-engine.vercel.app",
     thumbnail: "/work/plum-referral-engine/analytics.jpg",
     whyItExists: [
@@ -219,6 +226,112 @@ export const projects: Project[] = [
       "Full referral journey working on the deployed prototype",
       "Automated reward qualification and 30-day dedup via DB triggers",
       "Groq-personalized referral messaging designed against the real schema",
+    ],
+  },
+  {
+    slug: "paath",
+    num: "04",
+    title: "Paath",
+    oneLiner:
+      "Learn AI the way Varsity teaches markets and Duolingo builds habits.",
+    status: "Live, building out",
+    hook: "AI is the most in-demand skill with no good school. Paath teaches it — prompts, agents, RAG, evals — with story-first lessons and a check every five minutes.",
+    pullQuote:
+      "Story before the term — jargon gets its name only after you've watched it solve a problem.",
+    summary:
+      "A learning app for AI concepts, built on a studied synthesis of what actually works: Zerodha Varsity's story-first depth, Duolingo's habit pull, Lichess-style self-calibrating practice. Fifty-plus modules across foundation and marketing tracks, a 123-item practice bank with a rationale for every wrong answer, installable on a phone. Live today.",
+    liveUrl: "https://paath-iota.vercel.app",
+    whyItExists: [
+      "Everyone needs to learn AI; nowhere teaches it well. Content sites have depth but no practice, habit apps have streaks but shallow lessons — nobody has all the layers at once. Paath was built as that stack.",
+    ],
+    whatItSolves: [
+      "Lessons open with a story and a costed scenario — not \"what is prompt caching\" but \"you're paying $340 a month re-sending the same system prompt.\" The technical term arrives only after you've watched the problem play out.",
+      "Every five minutes of reading ends in a check. Wrong answers get individual explanations, and missed items resurface later, spaced.",
+    ],
+    whoItsFor: [
+      "Smart non-technical people who want to actually use AI — finish a module, do something new.",
+      "Builders who know the tools but not the map: when to RAG, when to fine-tune, how to eval.",
+    ],
+    howItWorks: [
+      {
+        text: "Two characters build a product across the curriculum; concepts get named after the story makes them necessary. Every chapter opens on real money or real failure.",
+      },
+      {
+        text: "A check every five minutes — 123 practice items in ten formats, each distractor carrying its own rationale, misses resurfacing on a spaced schedule.",
+      },
+      {
+        text: "Installable as an app (PWA); habit layer designed in — tiny daily commitment, streaks with insurance, effort-based XP so farming easy content never pays.",
+      },
+    ],
+    whyUseful: [
+      "Live and public today — 50+ modules, all cross-references and arithmetic script-verified.",
+      "Built from real teardowns of Varsity, Duolingo, Lichess, Math Academy and ~15 others — the design choices are argued, not vibes.",
+      "Content pipeline has an automated visual QA harness; every merge audited by a supervisor loop.",
+    ],
+    techNotes:
+      "Next.js PWA + Supabase (auth and cloud sync built, gated). Story-first content pipeline with script-verified arithmetic, automated screenshot QA, and figure infrastructure. Developed via a supervisor-agent loop auditing every merge.",
+    problem:
+      "AI skills are in demand but the learning landscape splits into deep content without practice and habit apps without depth.",
+    build: [
+      "Next.js PWA, live in production",
+      "50+ story-first modules across two tracks",
+      "123-item practice bank, ten formats, per-distractor rationales",
+      "Supabase auth + sync scaffold with RLS",
+    ],
+    metrics: [
+      "Live and installable today",
+      "Checks every five minutes of reading",
+      "All arithmetic script-verified",
+    ],
+  },
+  {
+    slug: "rostrum",
+    num: "05",
+    title: "Rostrum",
+    oneLiner: "A daily speaking trainer that measures delivery, not vibes.",
+    status: "Working end to end, local",
+    hook: "Speaking well is trained, not gifted. Rostrum drills it daily: read a briefing fast, speak cold for three minutes, get told exactly what was wrong.",
+    pullQuote: "Numbers from word timestamps — not a model's opinion.",
+    summary:
+      "Press a button, get a topic you didn't choose, read an eight-section briefing sized for ten minutes, then the mic starts on its own — three to five minutes of extempore. Whisper transcribes it and Python computes the delivery numbers: words per minute, filler rate, stalls over 1.2 seconds, vocabulary variety. The coaching notes must quote you to criticise you. The whole loop runs free.",
+    whyItExists: [
+      "Case finals and interviews are won out loud, and there's no gym for that. Rostrum is the daily rep: an unchosen topic, a fast read, a cold three-minute talk, and honest measurement.",
+    ],
+    whatItSolves: [
+      "It separates what machines measure well from what models judge well. Word timestamps give deterministic numbers — pace, fillers, stalls — and the LLM coach is only allowed to criticise with quotes from your own transcript.",
+    ],
+    whoItsFor: [
+      "Anyone who has to speak convincingly on things they didn't prepare — case competitions, interviews, class participation.",
+    ],
+    howItWorks: [
+      {
+        text: "One button pulls a topic you haven't spoken on. Two free-tier LLMs write the eight-section briefing — split across models because one quota can't produce ten minutes of reading in a minute.",
+      },
+      {
+        text: "A 10:00 timer runs while you read; at zero the mic starts on its own. Stop unlocks at three minutes, hard stop at five.",
+      },
+      {
+        text: "Whisper transcribes; Python computes WPM, filler count, stalls, vocabulary variety from word timestamps. The coach sees the numbers plus your transcript — and has to quote you.",
+      },
+    ],
+    whyUseful: [
+      "The entire loop costs nothing — free tiers throughout, and the rate limits shaped the architecture.",
+      "Every session is exportable in one command: SQL, JSON, CSV, and readable Markdown.",
+      "Briefs are cached — a topic you've opened before starts instantly.",
+    ],
+    techNotes:
+      "Python stdlib HTTP server + one vanilla-JS page, no framework, no build step. Groq (two models + Whisper), Firecrawl search, Postgres via Supabase, audio on Google Drive. Free-tier rate limits are the design constraint.",
+    problem:
+      "No daily practice loop exists for extempore speaking with honest, measured feedback.",
+    build: [
+      "Python stdlib server + single-page vanilla JS, no build step",
+      "Two-model briefing pipeline shaped by free-tier rate limits",
+      "Whisper transcription with deterministic delivery metrics",
+      "One-command full data export",
+    ],
+    metrics: [
+      "Full loop working end to end, runs free",
+      "Delivery numbers computed from word timestamps, not model opinion",
     ],
   },
 ];

@@ -30,35 +30,42 @@ export default function WorkCinematic({ projects }: { projects: Project[] }) {
             >
               <Link
                 href={`/work/${item.slug}`}
-                className="group grid grid-cols-12 items-baseline gap-4 border-b border-hairline py-8 transition-colors"
+                className="group grid grid-cols-12 gap-x-4 gap-y-5 border-b border-hairline py-10 transition-colors md:py-14"
               >
                 <span className="col-span-2 font-mono text-sm text-ink-muted md:col-span-1">
                   {item.num}
                 </span>
-                <span className="col-span-10 font-display text-display-m font-medium tracking-tight transition-colors group-hover:text-accent md:col-span-5">
-                  {item.title}
-                </span>
-                <span className="col-span-10 col-start-3 text-ink-muted md:col-span-4 md:col-start-auto">
-                  {item.hook ?? item.oneLiner}
-                </span>
-                <span className="col-span-10 col-start-3 flex items-baseline justify-between font-mono text-sm text-ink-muted md:col-span-2 md:col-start-auto md:justify-end md:gap-4">
-                  <span className="transition-colors group-hover:text-accent">
-                    View project
+                <div className="col-span-10 md:col-span-6">
+                  <span className="block font-display text-display-m font-medium tracking-tight transition-colors group-hover:text-accent">
+                    {item.title}
                   </span>
-                  <span
-                    aria-hidden
-                    className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
-                  >
-                    →
+                  <p className="mt-4 max-w-[52ch] font-display text-lg leading-snug tracking-tight md:text-xl">
+                    {item.hook ?? item.oneLiner}
+                  </p>
+                  {item.summary && (
+                    <p className="mt-4 max-w-[58ch] leading-relaxed text-ink-muted">
+                      {item.summary}
+                    </p>
+                  )}
+                  <span className="mt-6 inline-flex items-baseline gap-2 font-mono text-sm text-ink-muted">
+                    <span className="transition-colors group-hover:text-accent">
+                      View project
+                    </span>
+                    <span
+                      aria-hidden
+                      className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
+                    >
+                      →
+                    </span>
                   </span>
-                </span>
+                </div>
                 {item.thumbnail && (
-                  <span className="col-span-10 col-start-3 mt-2 block aspect-[16/10] max-w-[280px] overflow-hidden border border-hairline opacity-70 transition-opacity duration-300 group-hover:opacity-100 md:col-span-3 md:col-start-2 md:mt-4">
+                  <span className="col-span-10 col-start-3 block aspect-[16/10] overflow-hidden border border-hairline opacity-80 transition-opacity duration-300 group-hover:opacity-100 md:col-span-4 md:col-start-9 md:self-start">
                     <Image
                       src={item.thumbnail}
                       alt={`${item.title} screen`}
-                      width={560}
-                      height={350}
+                      width={720}
+                      height={450}
                       className="h-full w-full object-cover object-top"
                     />
                   </span>
