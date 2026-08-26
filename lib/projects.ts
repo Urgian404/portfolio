@@ -19,6 +19,7 @@ export type Project = {
   build: string[];
   metrics: string[];
   // Story fields
+  pullQuote?: string; // signature line, set large in the calligraphy between sections
   whyItExists?: string[];
   whatItSolves?: string[];
   whoItsFor?: string[];
@@ -32,16 +33,18 @@ export const projects: Project[] = [
     slug: "drizzler",
     num: "01",
     title: "Drizzler",
-    oneLiner: "AI personal stylist that knows your wardrobe and your taste",
+    oneLiner:
+      "Should I buy this — and what do I wear today? Answered on your own body.",
     status: "v1 working end to end",
-    hook: "Online shopping killed the trial room — and even that only judged one piece in a mirror. Drizzler styles any buy against the wardrobe you already own, worn on you, before you pay.",
+    hook: "Retailers show clothes on a stock model — they can't know your closet. Drizzler renders any buy on you, styled against what you already own, with a verdict before you pay.",
+    pullQuote: "No seller can copy this claim — they don't know your closet.",
     thumbnail: "/work/drizzler/style-this.jpg",
     whyItExists: [
       "Shopping moved online and the trial room vanished with it. And even the trial room only ever judged one piece in a mirror — never how it sits with everything already in your closet. Nobody wears one item alone, so every online buy is a gamble: will this actually work with what I own?",
     ],
     whatItSolves: [
       "Drizzler settles the gamble before you pay. Paste a product link and it builds full outfits around the piece from clothes you already own — worn on you, in a taste you pick.",
-      "It does what no trial room could: score a buy against your whole wardrobe, then hand you every way to wear it.",
+      "It does what no trial room could: score a buy against your whole wardrobe, end on a plain buy-or-skip verdict, and hand you every way to wear it.",
     ],
     whoItsFor: [
       "People with plain taste who want to dress better without studying fashion.",
@@ -96,6 +99,7 @@ export const projects: Project[] = [
     oneLiner: "Training and nutrition that learns your actual limits",
     status: "In development",
     hook: "A gym plan that knows your breaking points — reported by voice in three minutes a day.",
+    pullQuote: "It knows where you fail — and builds tomorrow from it.",
     thumbnail: "/work/fitforge/today.jpg",
     whyItExists: [
       "Every beginner's gym plan is a generic template. It doesn't know what you can lift, where you fail, or how you ate yesterday — so it can't answer the only question that matters: what should I do tomorrow?",
@@ -156,6 +160,7 @@ export const projects: Project[] = [
     oneLiner: "A referral system for a market where referrals are legally hard",
     status: "Working prototype on mock data",
     hook: "Indian insurance has no referral programs — regulation makes them dangerous. This is a full working answer to that.",
+    pullQuote: "Reward only the referrer, in vouchers not cash — growth a regulator can live with.",
     liveUrl: "https://plum-referral-engine.vercel.app",
     thumbnail: "/work/plum-referral-engine/analytics.jpg",
     whyItExists: [

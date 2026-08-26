@@ -82,13 +82,34 @@ function Story({ project }: { project: Project }) {
     <>
       {project.whyItExists && (
         <Section label="Why it exists">
-          <Paras items={project.whyItExists} />
+          {/* Editorial lede — the problem opens large, in the serif */}
+          <div className="max-w-[44ch] space-y-6">
+            {project.whyItExists.map((t, i) => (
+              <p
+                key={t}
+                className={
+                  i === 0
+                    ? "font-display text-[clamp(1.375rem,2.4vw,1.875rem)] font-light leading-[1.3] tracking-tight"
+                    : "leading-relaxed"
+                }
+              >
+                {t}
+              </p>
+            ))}
+          </div>
         </Section>
       )}
       {project.whatItSolves && (
         <Section label="What it solves">
           <Paras items={project.whatItSolves} />
         </Section>
+      )}
+      {project.pullQuote && (
+        <blockquote className="mx-auto max-w-[26ch] py-16 text-center md:py-24">
+          <p className="calligraphy text-[clamp(1.75rem,3.5vw,2.75rem)] leading-[1.2] text-accent">
+            {project.pullQuote}
+          </p>
+        </blockquote>
       )}
       {project.whoItsFor && (
         <Section label="Who it's for">
