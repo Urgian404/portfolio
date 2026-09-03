@@ -19,6 +19,7 @@ export async function generateMetadata({
   return {
     title: `${project.title} — ${project.oneLiner}`,
     description,
+    alternates: { canonical: `/work/${project.slug}` },
     openGraph: {
       type: "article",
       title: `${project.title} — Urgian Padma`,
@@ -195,8 +196,40 @@ export default async function CaseStudy({
 
   const hasStory = Boolean(project.whyItExists?.length);
 
+  const SITE_URL = "https://portfolio-roan-pi-35.vercel.app";
+  const projectJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        name: project.title,
+        description: project.oneLiner,
+        url: project.liveUrl ?? `${SITE_URL}/work/${project.slug}`,
+        applicationCategory: "WebApplication",
+        author: { "@id": `${SITE_URL}/#person` },
+        ...(project.thumbnail && { image: `${SITE_URL}${project.thumbnail}` }),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Work", item: `${SITE_URL}/#work` },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: project.title,
+            item: `${SITE_URL}/work/${project.slug}`,
+          },
+        ],
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectJsonLd) }}
+      />
       <header className="border-b border-hairline">
         <nav className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-[var(--gutter)]">
           <Link

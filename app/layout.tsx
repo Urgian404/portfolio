@@ -33,6 +33,7 @@ export const metadata: Metadata = {
   },
   description:
     "Portfolio of Urgian Padma, IPM at IIM Indore. Ships real products end to end — an AI personal stylist, an adaptive training planner, and a referral engine for Indian insurance.",
+  alternates: { canonical: "/" },
   keywords: [
     "Urgian Padma",
     "builder",
@@ -44,6 +45,8 @@ export const metadata: Metadata = {
     "Drizzler",
     "FitForge",
     "Plum Referral Engine",
+    "Paath",
+    "Rostrum",
   ],
   openGraph: {
     type: "website",
@@ -68,18 +71,33 @@ export const metadata: Metadata = {
  *  name queries. Facts only: nothing here that isn't on the page. */
 const personJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Urgian Padma",
-  url: SITE_URL,
-  jobTitle: "Builder",
-  alumniOf: {
-    "@type": "CollegeOrUniversity",
-    name: "Indian Institute of Management Indore",
-  },
-  knowsAbout: ["Marketing", "AI products", "Product building"],
-  sameAs: [
-    "https://www.linkedin.com/in/urgian-padma/",
-    "https://github.com/Urgian404",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${SITE_URL}/#person`,
+      name: "Urgian Padma",
+      url: SITE_URL,
+      jobTitle: "Builder",
+      alumniOf: {
+        "@type": "CollegeOrUniversity",
+        name: "Indian Institute of Management Indore",
+      },
+      knowsAbout: ["Marketing", "AI products", "Product building"],
+      sameAs: [
+        "https://www.linkedin.com/in/urgian-padma/",
+        "https://github.com/Urgian404",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: "Urgian Padma — portfolio",
+      description:
+        "Products built end to end by Urgian Padma: Drizzler, FitForge, Plum Referral Engine, Paath, Rostrum.",
+      author: { "@id": `${SITE_URL}/#person` },
+      inLanguage: "en",
+    },
   ],
 };
 
