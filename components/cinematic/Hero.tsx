@@ -69,9 +69,12 @@ export default function Hero() {
           <motion.h1
             style={{ x: reduced ? undefined : firstX }}
             className="w-full text-left font-display text-[length:var(--text-hero)] font-light leading-[0.92] tracking-[-0.02em] will-change-transform"
-            aria-label="Urgian Padma"
           >
-            <Letters word={FIRST} from={-1} />
+            {/* Full name as real text for search engines; letters are decoration */}
+            <span className="sr-only">Urgian Padma</span>
+            <span aria-hidden>
+              <Letters word={FIRST} from={-1} />
+            </span>
           </motion.h1>
           <motion.div
             style={{ x: reduced ? undefined : lastX }}

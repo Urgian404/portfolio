@@ -19,7 +19,7 @@ export default function Home() {
               <a href="#work" className="transition-colors hover:text-accent">
                 Work
               </a>
-              <a href="#about" className="transition-colors hover:text-accent">
+              <a href="/about" className="transition-colors hover:text-accent">
                 About
               </a>
               <a href="#record" className="transition-colors hover:text-accent">
@@ -54,7 +54,13 @@ export default function Home() {
               <span className="calligraphy">builder</span> — picking something
               worth making and directing it end to end, using AI as the way I
               build. This site is a running record of that: what I&apos;ve
-              shipped, how, and what it does.
+              shipped, how, and what it does.{" "}
+              <a
+                href="/about"
+                className="underline decoration-hairline underline-offset-4 transition-colors hover:text-accent"
+              >
+                Full profile →
+              </a>
             </p>
           </section>
 

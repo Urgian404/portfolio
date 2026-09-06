@@ -38,7 +38,7 @@ export default function Finale() {
           <a
             href="https://www.linkedin.com/in/urgian-padma/"
             target="_blank"
-            rel="noreferrer"
+            rel="me noreferrer"
             className="border border-ink px-8 py-4 font-mono text-sm transition-colors duration-200 hover:border-accent hover:text-accent"
           >
             LinkedIn
@@ -50,7 +50,7 @@ export default function Finale() {
             <a
               href="https://www.linkedin.com/in/urgian-padma/"
               target="_blank"
-              rel="noreferrer"
+              rel="me noreferrer"
               className="transition-colors hover:text-accent"
             >
               LinkedIn
@@ -58,7 +58,7 @@ export default function Finale() {
             <a
               href="https://github.com/Urgian404"
               target="_blank"
-              rel="noreferrer"
+              rel="me noreferrer"
               className="transition-colors hover:text-accent"
             >
               GitHub

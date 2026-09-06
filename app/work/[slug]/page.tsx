@@ -22,6 +22,7 @@ export async function generateMetadata({
     alternates: { canonical: `/work/${project.slug}` },
     openGraph: {
       type: "article",
+      url: `https://portfolio-roan-pi-35.vercel.app/work/${project.slug}`,
       title: `${project.title} — Urgian Padma`,
       description,
       images: project.thumbnail
