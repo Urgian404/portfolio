@@ -57,6 +57,10 @@ const recognition = [
         label: "IIM Indore's LinkedIn post naming the team",
       },
       {
+        href: "https://www.facebook.com/iimindore/posts/proudplaneti-we-are-delighted-to-share-that-team-carpe-diem-from-iim-indore-has-/1236928901576274/",
+        label: "IIM Indore's Facebook post naming Urgian Padma",
+      },
+      {
         href: "https://www.instagram.com/p/DP-lUAkCBMk/",
         label: "IIM Indore's Instagram post — Team Carpe Diem",
       },
@@ -68,7 +72,7 @@ const recognition = [
     year: "2024",
     detail:
       "Policy case on LGBTQ+ welfare — 'Rainbow Credits', a tradable-credit mechanism; top five of 1,500+ registrations across 11 MBA campuses.",
-    sources: [{ href: "https://www.linkedin.com/posts/deshna-jain-b5b5a5143_re-deisign-case-competition-20-bcg-india-activity-7228764126146150400-6LXS", label: "BCG winners announcement" }],
+    sources: [{ href: "https://www.linkedin.com/posts/deshna-jain-b5b5a5143_re-deisign-case-competition-20-bcg-india-activity-7228764126146150400-6LXS", label: "ReDEIsign 2.0 winners post" }],
   },
   {
     title: "L&T OutThink",
@@ -76,7 +80,16 @@ const recognition = [
     year: "2025",
     detail:
       "Market-entry case on medical implants; second runners-up at the national grand finale.",
-    sources: [{ href: "https://www.linkedin.com/feed/update/urn:li:activity:7315244800448913408/", label: "Grand finale announcement" }],
+    sources: [
+      {
+        href: "https://www.linkedin.com/posts/unstop_lt-outthink-finalists-activity-7310578769721704448-HUqX",
+        label: "Unstop's finalists post naming Urgian Padma",
+      },
+      {
+        href: "https://www.linkedin.com/feed/update/urn:li:activity:7315244800448913408/",
+        label: "Grand finale announcement",
+      },
+    ],
   },
   {
     title: "JSW Energy Case Challenge × ISB",
