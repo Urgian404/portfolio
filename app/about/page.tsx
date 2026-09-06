@@ -26,8 +26,16 @@ const recognition = [
     year: "2023",
     detail:
       "Winner out of 70,980 participants in the Driver Earnings track with Copilot Rickshaw — an ML co-pilot routing auto drivers to high-demand zones, cutting waiting time ~20%.",
-    href: "https://www.nammayatri.in/challenge",
-    source: "Official Namma Yatri winners list naming Urgian Padma",
+    sources: [
+      {
+        href: "https://www.scribd.com/document/662541685",
+        label: "Archived official winners PDF — \u201cWinner: Urgian Padma\u201d",
+      },
+      {
+        href: "https://www.nammayatri.in/challenge",
+        label: "Official challenge page (its winner-list link is currently broken)",
+      },
+    ],
   },
   {
     title: "Cornell Corning EMI Case Competition",
@@ -35,8 +43,24 @@ const recognition = [
     year: "2025",
     detail:
       "Vaccine market-entry case for Africa; runner-up among 1,400+ participants worldwide, presented at Cornell University.",
-    href: "https://www.linkedin.com/feed/update/urn:li:activity:7385576707661119488/",
-    source: "IIM Indore's LinkedIn post congratulating the team",
+    sources: [
+      {
+        href: "https://iimidr.ac.in/wp-content/uploads/2025/11/AlumniNL_November2025.pdf",
+        label: "IIM Indore Alumni Newsletter (Nov 2025) naming Urgian Padma, p.11",
+      },
+      {
+        href: "https://business.cornell.edu/centers/ccem/conference/corning-case-competition/",
+        label: "Cornell's results page — IIM Indore placed 2nd",
+      },
+      {
+        href: "https://www.linkedin.com/feed/update/urn:li:activity:7385576707661119488/",
+        label: "IIM Indore's LinkedIn post naming the team",
+      },
+      {
+        href: "https://www.instagram.com/p/DP-lUAkCBMk/",
+        label: "IIM Indore's Instagram post — Team Carpe Diem",
+      },
+    ],
   },
   {
     title: "BCG ReDEIsign Case Competition 2.0",
@@ -44,8 +68,7 @@ const recognition = [
     year: "2024",
     detail:
       "Policy case on LGBTQ+ welfare — 'Rainbow Credits', a tradable-credit mechanism; top five of 1,500+ registrations across 11 MBA campuses.",
-    href: "https://www.linkedin.com/posts/deshna-jain-b5b5a5143_re-deisign-case-competition-20-bcg-india-activity-7228764126146150400-6LXS",
-    source: "BCG winners announcement",
+    sources: [{ href: "https://www.linkedin.com/posts/deshna-jain-b5b5a5143_re-deisign-case-competition-20-bcg-india-activity-7228764126146150400-6LXS", label: "BCG winners announcement" }],
   },
   {
     title: "L&T OutThink",
@@ -53,8 +76,7 @@ const recognition = [
     year: "2025",
     detail:
       "Market-entry case on medical implants; second runners-up at the national grand finale.",
-    href: "https://www.linkedin.com/feed/update/urn:li:activity:7315244800448913408/",
-    source: "Grand finale announcement",
+    sources: [{ href: "https://www.linkedin.com/feed/update/urn:li:activity:7315244800448913408/", label: "Grand finale announcement" }],
   },
   {
     title: "JSW Energy Case Challenge × ISB",
@@ -62,8 +84,7 @@ const recognition = [
     year: "2024",
     detail:
       "Offshore-wind entry strategy for JSW Energy; podium at ISB's Advaita 2024.",
-    href: "https://www.linkedin.com/posts/prakritish-bailung-310073232_thrilled-to-share-that-my-team-maanav-rathore-ugcPost-7260521236655460352-nKwx",
-    source: "Winners post",
+    sources: [{ href: "https://www.linkedin.com/posts/prakritish-bailung-310073232_thrilled-to-share-that-my-team-maanav-rathore-ugcPost-7260521236655460352-nKwx", label: "Winners post" }],
   },
   {
     title: "Reckitt Career Compass — Finance Track",
@@ -71,8 +92,7 @@ const recognition = [
     year: "2024",
     detail:
       "Pricing-and-portfolio recovery plan presented to the brand's Indian GM; campus winner on the finance track.",
-    href: "https://www.linkedin.com/feed/update/urn:li:activity:7262400054005563392/",
-    source: "Winners post",
+    sources: [{ href: "https://www.linkedin.com/feed/update/urn:li:activity:7262400054005563392/", label: "Winners post" }],
   },
   {
     title: "IMA Student Case Competition, India",
@@ -80,8 +100,7 @@ const recognition = [
     year: "2024",
     detail:
       "Accounting-method case at the India finals (February 2024); third place nationally with a full CMA (US) scholarship awarded.",
-    href: "https://www.linkedin.com/feed/update/urn:li:activity:7167951231745736705/",
-    source: "LinkedIn announcement naming the team",
+    sources: [{ href: "https://www.linkedin.com/feed/update/urn:li:activity:7167951231745736705/", label: "LinkedIn announcement naming the team" }],
   },
   {
     title: "Unstop Talent Park (Non-Tech)",
@@ -89,8 +108,7 @@ const recognition = [
     year: "2024",
     detail:
       "Growth case for Unstop; third nationally out of 18,000+ participants.",
-    href: "https://unstop.com/awards/u/urgian-padma-2505896/2025",
-    source: "Unstop award profile",
+    sources: [{ href: "https://unstop.com/awards/u/urgian-padma-2505896/2025", label: "Unstop award profile" }],
   },
 ];
 
@@ -129,11 +147,13 @@ const aboutJsonLd = {
       "https://github.com/Urgian404",
       "https://unstop.com/awards/u/urgian-padma-2505896/2025",
     ],
-    subjectOf: recognition.map((r) => ({
-      "@type": "WebPage",
-      url: r.href,
-      name: `${r.title} — ${r.result}`,
-    })),
+    subjectOf: recognition.flatMap((r) =>
+      r.sources.map((s) => ({
+        "@type": "WebPage",
+        url: s.href,
+        name: `${r.title} — ${r.result}`,
+      }))
+    ),
   },
 };
 
@@ -211,14 +231,19 @@ export default function About() {
                 <p className="text-sm leading-relaxed text-ink-muted">
                   {r.detail}
                 </p>
-                <a
-                  href={r.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="w-fit font-mono text-xs text-ink-muted underline decoration-hairline underline-offset-4 transition-colors hover:text-accent"
-                >
-                  {r.source} ↗
-                </a>
+                <span className="flex flex-wrap gap-x-4 gap-y-1">
+                  {r.sources.map((s) => (
+                    <a
+                      key={s.href}
+                      href={s.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="w-fit font-mono text-xs text-ink-muted underline decoration-hairline underline-offset-4 transition-colors hover:text-accent"
+                    >
+                      {s.label} ↗
+                    </a>
+                  ))}
+                </span>
               </li>
             ))}
           </ul>
