@@ -145,7 +145,6 @@ const aboutJsonLd = {
     sameAs: [
       "https://www.linkedin.com/in/urgian-padma/",
       "https://github.com/Urgian404",
-      "https://unstop.com/awards/u/urgian-padma-2505896/2025",
     ],
     subjectOf: recognition.flatMap((r) =>
       r.sources.map((s) => ({
