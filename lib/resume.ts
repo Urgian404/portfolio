@@ -107,7 +107,7 @@ export const achievements: Card[] = [
     tag: "National Winner",
     points: [
       "Winner out of 70,980 participants — Driver Earnings Improvement, Driver Empowerment track",
-      "Conceptualised a 'Co-pilot for Auto Drivers': an ML model using real-time population-density data to route drivers to high-demand zones",
+      "Conceptualised 'Copilot Rickshaw': an ML model using real-time population-density data to route drivers to high-demand zones",
       "Cut driver waiting time ~20%, raising rides per hour and earnings without longer shifts",
     ],
     year: "2023",

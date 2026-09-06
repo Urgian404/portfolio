@@ -22,12 +22,12 @@ export const metadata: Metadata = {
 const recognition = [
   {
     title: "Juspay Namma Yatri Open Mobility Challenge",
-    result: "National Winner",
+    result: "National Winner — Copilot Rickshaw",
     year: "2023",
     detail:
-      "Winner out of 70,980 participants in the Driver Earnings track — an ML co-pilot routing auto drivers to high-demand zones, cutting waiting time ~20%.",
+      "Winner out of 70,980 participants in the Driver Earnings track with Copilot Rickshaw — an ML co-pilot routing auto drivers to high-demand zones, cutting waiting time ~20%.",
     href: "https://www.nammayatri.in/challenge",
-    source: "nammayatri.in — official winners list",
+    source: "Official Namma Yatri winners list naming Urgian Padma",
   },
   {
     title: "Cornell Corning EMI Case Competition",
@@ -36,7 +36,7 @@ const recognition = [
     detail:
       "Vaccine market-entry case for Africa; runner-up among 1,400+ participants worldwide, presented at Cornell University.",
     href: "https://www.linkedin.com/feed/update/urn:li:activity:7385576707661119488/",
-    source: "IIM Indore announcement",
+    source: "IIM Indore's LinkedIn post congratulating the team",
   },
   {
     title: "BCG ReDEIsign Case Competition 2.0",
@@ -79,9 +79,9 @@ const recognition = [
     result: "National Second Runner-Up · CMA (US) scholarship",
     year: "2024",
     detail:
-      "Accounting-method case at the India finals; podium finish with a full CMA (US) scholarship awarded.",
+      "Accounting-method case at the India finals (February 2024); third place nationally with a full CMA (US) scholarship awarded.",
     href: "https://www.linkedin.com/feed/update/urn:li:activity:7167951231745736705/",
-    source: "Finals announcement",
+    source: "LinkedIn announcement naming the team",
   },
   {
     title: "Unstop Talent Park (Non-Tech)",
@@ -114,7 +114,7 @@ const aboutJsonLd = {
     },
     homeLocation: { "@type": "Place", name: "Himachal Pradesh, India" },
     award: [
-      "National Winner, Juspay Namma Yatri Open Mobility Challenge (2023, 70,980 participants)",
+      "National Winner, Juspay Namma Yatri Open Mobility Challenge with Copilot Rickshaw (2023, 70,980 participants)",
       "International Runner-Up, Cornell Corning EMI Case Competition (2025)",
       "National Top 5, BCG ReDEIsign Case Competition 2.0 (2024)",
       "National Second Runners-Up, L&T OutThink (2025)",
